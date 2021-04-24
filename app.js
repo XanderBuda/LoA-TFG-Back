@@ -24,5 +24,7 @@ app.use((req, res, next) => {
 
 //INTERCALADO DE RUTAS
 // app.use('', userRoutes);
+app.use('', teamRoutes);
+// app.use('', tournamentRoutes);
 
 module.exports = app;
