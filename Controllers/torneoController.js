@@ -26,8 +26,8 @@ var tournamentController = {
         var params = req.body;
 
         tournament.name = params.name;
-        tournament.image = null;
-
+        tournament.logo = null;
+        tournament.size = params.size;
 
         tournament.save((err, tournamentStored) => {
 
