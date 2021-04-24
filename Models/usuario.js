@@ -11,13 +11,13 @@ const UserSchema = Schema({
     teamRoutes: String,
     statistics: {
         victories: { type: Number, default: 0 },
-        defeats:  { type: Number, default: 0 },
-        rankigpoints:  { type: Number, default: 0 }
+        defeats: { type: Number, default: 0 },
+        rankigpoints: { type: Number, default: 0 }
     },
     elo: String,
     roles: {
-        first: {type: String,enum: ['Toplane','Jungle','Midlane','Adc','Support'] },
-        second: {type: String,enum: ['Toplane','Jungle','Midlane','Adc','Support'] },
+        first: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support'] },
+        second: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support'] },
     }
 });
 
