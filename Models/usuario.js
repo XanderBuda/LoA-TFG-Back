@@ -1,20 +1,21 @@
 'use strict'
 
 const mongoose = require('mongoose');
+const Team = require('./equipo');
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
     username: String,
-    picture: String,
+    picture: { type: String, default: null },
     email: String,
     password: String,
-    teamRoutes: String,
+    team: {type: Team, default: null},
     statistics: {
         victories: { type: Number, default: 0 },
         defeats:  { type: Number, default: 0 },
         rankigpoints:  { type: Number, default: 0 }
     },
-    elo: String,
+    elo: { type: String, default:null},
     roles: {
         first: {type: String,enum: ['Toplane','Jungle','Midlane','Adc','Support'] },
         second: {type: String,enum: ['Toplane','Jungle','Midlane','Adc','Support'] },
