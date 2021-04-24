@@ -12,9 +12,8 @@ mongoose.connect(config.db, (err, res) => {
     }
     console.log("Conexion a la base de datos establecida");
 
-    app.listen(config.port, () =>{
+    app.listen(config.port, () => {
         console.log(`LoA corriendo en http://localhost:${config.port}`);
     });
 
-    })
-   
+});

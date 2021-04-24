@@ -10,7 +10,7 @@ var teamRoutes = require('./Routes/equipoRoute');
 var tournamentRoutes = require('./Routes/torneoRoute');
 
 //MIDDLEWARES
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //CORS
