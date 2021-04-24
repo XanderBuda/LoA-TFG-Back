@@ -16,8 +16,8 @@ const UserSchema = Schema({
     },
     elo: { type: String, default: null },
     roles: {
-        first: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support'], default: null },
-        second: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support'], default: null },
+        first: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support',null], default: null },
+        second: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support',null], default: null },
     }
 });
 
