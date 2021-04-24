@@ -1,9 +1,12 @@
 'use strict'
 
 const mongoose = require('mongoose');
+const config = require('./Config/config');
+const app = require('./app');
+
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/LoA')
+mongoose.connect(config.db)
     .then(() => {
         console.log("Conexion a la base de datos establecida");
     })
