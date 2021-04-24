@@ -1,7 +1,6 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const Team = require('./equipo');
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
@@ -9,7 +8,7 @@ const UserSchema = Schema({
     picture: { type: String, default: null },
     email: String,
     password: String,
-    team: {type: Team, default: null},
+    team: {type: Schema.ObjectId, ref: 'Team', default: null},
     statistics: {
         victories: { type: Number, default: 0 },
         defeats:  { type: Number, default: 0 },

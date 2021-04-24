@@ -1,17 +1,15 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const User = require('./usuario');
-const Team = require('./equipo');
-
 const Schema = mongoose.Schema;
 
+
 const TorneoSchema = Schema({
-    admin: User,
+    admin: { type: Schema.ObjectId, ref: 'User' },
     name: String,
-    logo: { type: String, default: null},
-    size: { type: Number, enum: [4,8,16]},
-    teams: { type: Team, maxItems: size}
+    logo: { type: String, default: null },
+    size: { type: Number, enum: [4, 8, 16] },
+    teams: { type: Schema.ObjectId, ref: 'Team', maxItems: size }
 });
 
-module.exports = mongoose.model('Tournament',TorneoSchema);
+module.exports = mongoose.model('Tournament', TorneoSchema);
