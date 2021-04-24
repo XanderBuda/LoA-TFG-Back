@@ -11,13 +11,13 @@ const UserSchema = Schema({
     team: {type: Schema.ObjectId, ref: 'Team', default: null},
     statistics: {
         victories: { type: Number, default: 0 },
-        defeats:  { type: Number, default: 0 },
-        rankigpoints:  { type: Number, default: 0 }
+        defeats: { type: Number, default: 0 },
+        rankigpoints: { type: Number, default: 0 }
     },
     elo: { type: String, default:null},
     roles: {
-        first: {type: String,enum: ['Toplane','Jungle','Midlane','Adc','Support'] },
-        second: {type: String,enum: ['Toplane','Jungle','Midlane','Adc','Support'] },
+        first: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support'] },
+        second: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support'] },
     }
 });
 

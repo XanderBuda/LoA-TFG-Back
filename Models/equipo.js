@@ -3,17 +3,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var User = require('./usuario');
-
 const TeamSchema = Schema({
     name: String,
-    admin: User,
+    admin: { type: Schema.ObjectId, ref: 'User' },
     users: {
-        1: { type: User, default: null },
-        2: { type: User, default: null },
-        3: { type: User, default: null },
-        4: { type: User, default: null },
-        5: { type: User, default: null }
+        1: { type: Schema.ObjectId, ref: 'User', default: null },
+        2: { type: Schema.ObjectId, ref: 'User', default: null },
+        3: { type: Schema.ObjectId, ref: 'User', default: null },
+        4: { type: Schema.ObjectId, ref: 'User', default: null },
+        5: { type: Schema.ObjectId, ref: 'User', default: null },
     },
     image: String,
     statistics: {
@@ -21,6 +19,7 @@ const TeamSchema = Schema({
         defeats: { type: Number, default: 0 },
         rankingpoints: { type: Number, default: 0 }
     }
+
 });
 
 module.exports = mongoose.model('Team', TeamSchema);
