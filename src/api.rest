@@ -1,3 +1,7 @@
+#######################################################################
+### USER ##############################################################
+#######################################################################
+
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
 
@@ -28,5 +32,39 @@ Content-Type: application/json
 ### DELETE A USER FOR ID
 DELETE http://localhost:3700/user/delete/60859758743afc1c34c2005b
 
+########################################################################
+### TEAMS ##############################################################
+########################################################################
+
 ### ALL TEAMS REQUEST
 GET http://localhost:3700/team/all
+
+### CREATE A NEW TEAM
+POST http://localhost:3700/team/new
+Content-Type: application/json
+
+{
+    "name": "TEAM IBAI"
+}
+
+### FIND A TEAM FOR ID
+GET http://localhost:3700/team/6085aa24ccd0e21b58659c42
+
+### UPDATE A TEAM FOR ID
+PUT http://localhost:3700/team/update/6085aa24ccd0e21b58659c42
+Content-Type: application/json
+
+{
+    "statistics": {
+        "victories": 3,
+        "defeats": 1,
+        "rankingpoints": 2000
+    }
+}
+
+### DELETE A TEAM FOR ID
+DELETE http://localhost:3700/team/delete/6085aa24ccd0e21b58659c42
+
+########################################################################
+### TOURNAMENTS ########################################################
+########################################################################
