@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-
+const morgan = require("morgan");
 var app = express();
 
 //RUTAS
@@ -11,6 +11,7 @@ var tournamentRoutes = require('./Routes/torneoRoute');
 
 //MIDDLEWARES
 app.use(express.urlencoded({ extended: false }));
+app.use(morgan("dev"));
 app.use(express.json());
 
 //CORS
