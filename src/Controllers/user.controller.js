@@ -3,51 +3,56 @@ const User = require('../Models/User');
 var userController = {};
 
 userController.getUsers = async (req, res) => {
-    await User.find({}, (err, users) => {
-        if (err) return res.status(500).send({ message: `ERROR al realizar la peticion: ${err}` });
-        if (!users) return res.status(404).send({ message: `No hay usuarios` });
-        return res.status(200).send({ users });
-    });
+    try {
+        const users = await User.find();
+        if (users.length == 0) return res.status(404).send({ message: `No hay usuarios` });
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+    }
 }
 
 
 userController.getUserById = async (req, res) => {
-    const { id } = req.params;
-    await User.findById(id, (err, user) => {
-        if (err) return res.status(500).send({ message: `ERROR al realizar la peticion: ${err}` });
+    try {
+        let user = await User.findById(req.params.id);
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
-        res.status(200).send({ user });
-    })
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+    }
 };
 
 userController.newUser = async (req, res) => {
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    });
-
-    user.save((err, userStored) => {
-        if (err) return res.status(500).send({ message: `ERROR al guardar el usuario: ${err}` });
-        res.status(200).send({ user: userStored });
-    });
+    try {
+        const user = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        });
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al guardar el usuario: ${error}` });
+    }
 
 };
 
 userController.updateUser = async (req, res) => {
-    const { id } = req.params;
-    await User.findByIdAndUpdate(id, { $set: req.body }, { new: true }, (err, userUpdate) => {
-        if (err) return res.status(500).send({ message: `ERROR al actualiar el usuario: ${err}` });
-        res.status(200).send({ user: userUpdate });
-    });
+    try {
+        const userUpdate = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
+        res.status(200).json({ user: userUpdate });
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al actualiar el usuario: ${error}` });
+    }
 }
 userController.deleteUser = async (req, res) => {
-
-    await User.findByIdAndRemove(req.params.id, (err) => {
-        if (err) return res.status(500).send({ message: `ERROR al borrar el usuarios: ${err}` });
-        res.status(200).send({ message: `El usuario ha sido borrado` });
-    });
+    try {
+        await User.findByIdAndRemove(req.params.id);
+        res.status(200).json({ message: "Usuario borrado" });
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al borrar el usuarios: ${error}` });
+    }
 }
-
 
 module.exports = userController;
