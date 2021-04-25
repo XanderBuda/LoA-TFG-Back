@@ -1,4 +1,4 @@
-const User = require('../Models/pepe');
+const User = require('../Models/User');
 
 var userController = {};
 
