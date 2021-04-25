@@ -1,6 +1,6 @@
 'use strict'
 
-var Team = require('../Models/equipo');
+const { Team } = require('../Models/equipo');
 var fs = require('fs');
 
 var teamController = {
@@ -30,7 +30,7 @@ var teamController = {
         team.name = params.name;
         team.users.first = params.admin;
         team.admin = params.admin;
-        
+
         team.image = null;
 
 
@@ -109,7 +109,7 @@ var teamController = {
         Team.findByIdAndUpdate(teamId, params, { new: true }, (err, teamUpdated) => {
             if (err) return res.status(500).send({ message: 'Error al actualiar los datos' });
             if (!teamUpdated) return res.status(404).send({ message: 'El equipo no existe' });
-            
+
 
             return res.status(200).send({ team: teamUpdated });
         });

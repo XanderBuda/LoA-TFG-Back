@@ -2,13 +2,14 @@
 
 const express = require('express');
 const morgan = require("morgan");
+
 const cors = require("cors");
 var app = express();
 
 //RUTAS
-var userRoutes = require('./Routes/usuarioRoute');
-var teamRoutes = require('./Routes/equipoRoute');
-var tournamentRoutes = require('./Routes/torneoRoute');
+var userRoutes = require('./Routes/user.routes');
+var teamRoutes = require('./Routes/team.routes');
+var tournamentRoutes = require('./Routes/tournament.routes');
 
 //MIDDLEWARES
 app.use(express.urlencoded({ extended: false }));
@@ -19,8 +20,8 @@ app.use(express.json());
 app.use(cors());
 
 //INTERCALADO DE RUTAS
-app.use('', userRoutes);
-app.use('', teamRoutes);
-app.use('', tournamentRoutes);
+app.use('/user', userRoutes);
+app.use('/team', teamRoutes);
+app.use('/tournaments', tournamentRoutes);
 
 module.exports = app;
