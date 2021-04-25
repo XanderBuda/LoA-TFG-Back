@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AlexandruBuda96/LoA-TFG#readme",
   "dependencies": {
     "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.5",
     "mongoose-autopopulate": "^0.13.0",
