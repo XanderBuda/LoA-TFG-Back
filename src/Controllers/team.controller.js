@@ -1,5 +1,5 @@
 const Team = require('../Models/Team');
-var fs = require('fs');
+const fs = require('fs');
 
 const teamController = {};
 
@@ -54,8 +54,7 @@ teamController.deleteTeam = async (req, res) => {
     }
 }
 
-teamController.uploadLogo = (req, res) => {
-    var teamId = req.params.id;
+teamController.uploadLogo = async (req, res) => {
     var fileName = "Imagen no subida...";
 
     if (req.files) {
@@ -64,30 +63,21 @@ teamController.uploadLogo = (req, res) => {
         fileName = fileSplit[1];
         var extSplit = fileName.split('\.');
         var fileExt = extSplit[1];
-        if (fileExt == "png" || fileExt == "jpg" || fileExt == "jpeg" || fileExt == "gif") {
-            Team.findByIdAndUpdate(teamId, { image: fileName }, { new: true }, (err, teamUpdated) => {
-                if (err) return res.status(500).json({
-                    message: 'Error al actualizar los datos'
-                });
-                if (!teamUpdated) return res.status(404).json({
-                    message: 'El equipo no existe'
-                });
-                return res.status(200).json({
-                    team: teamUpdated
-                });
-            });
-        } else {
-            fs.unlink(filePath, err => {
-                return res.status(200).json({
-                    message: 'La extensión no es válida'
-                });
-            });
-        }
 
+        if (fileExt == "png" || fileExt == "jpg" || fileExt == "jpeg" || fileExt == "gif") {
+            try {
+                const team = await Team.findByIdAndUpdate(req.params.id, { image: fileName }, { new: true });
+                if (!team) return res.status(404).json({ message: 'El equipo no existe' });
+                res.status(200).json(team);
+            } catch (error) {
+                res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+            }
+        } else {
+            await fs.unlink(filePath);
+            res.status(200).json({ message: 'La extensión no es válida' });
+        }
     } else {
-        return res.status(200).json({
-            files: fileName
-        });
+        res.status(200).json(fileName);
     }
 }
 
