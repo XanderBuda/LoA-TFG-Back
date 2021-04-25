@@ -13,9 +13,9 @@ userController.getUsers = async (req, res) => {
 }
 
 
-userController.getUserById = async (req, res) => {
+userController.getUserById = async (req, res) => { 
     try {
-        let user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.id);
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
         res.status(200).json(user);
     } catch (error) {
@@ -25,12 +25,9 @@ userController.getUserById = async (req, res) => {
 
 userController.newUser = async (req, res) => {
     try {
-        const user = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        });
+        const user = new User(req.body);
         await user.save();
+        if (!user) return res.status(404).send({ message: 'No se ha podido guardar el usuario' });
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: `ERROR al guardar el usuario: ${error}` });
@@ -41,6 +38,7 @@ userController.newUser = async (req, res) => {
 userController.updateUser = async (req, res) => {
     try {
         const userUpdate = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
+        if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ user: userUpdate });
     } catch (error) {
         res.status(500).json({ message: `ERROR al actualiar el usuario: ${error}` });
@@ -48,7 +46,8 @@ userController.updateUser = async (req, res) => {
 }
 userController.deleteUser = async (req, res) => {
     try {
-        await User.findByIdAndRemove(req.params.id);
+        const userDelete = await User.findByIdAndRemove(req.params.id);
+        if (!userDelete) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ message: "Usuario borrado" });
     } catch (error) {
         res.status(500).json({ message: `ERROR al borrar el usuarios: ${error}` });
