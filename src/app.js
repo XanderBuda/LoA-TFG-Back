@@ -1,10 +1,7 @@
-'use strict'
-
 const express = require('express');
 const morgan = require("morgan");
-
 const cors = require("cors");
-var app = express();
+const app = express();
 
 //RUTAS
 var userRoutes = require('./Routes/user.routes');

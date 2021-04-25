@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const teamController = require('../Controllers/equipoController');
+const teamController = require('../Controllers/team.controller');
 
 router.get('/:id?', teamController.getTeam);
 router.get('/all', teamController.getTeams);

@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const tournamentController = require('../Controllers/torneoController');
+const tournamentController = require('../Controllers/tournament.controller');
 
 router.get('/:id?', tournamentController.getTournament);
 router.get('/all', tournamentController.getTournaments);
