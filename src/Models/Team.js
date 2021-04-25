@@ -1,17 +1,14 @@
-'use strict'
+const { Schema, model } = require('mongoose');
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const TeamSchema = Schema({
+const TeamSchema = new Schema({
     name: String,
-    admin: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
+    admin: { type: String, default: null },
     users: {
-        first: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
-        second: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
-        third: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
-        fourth: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
-        five: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
+        first: { type: String, default: null },
+        second: { type: String, default: null },
+        third: { type: String, default: null },
+        fourth: { type: String, default: null },
+        five: { type: String, default: null },
     },
     image: String,
     statistics: {
@@ -20,7 +17,10 @@ const TeamSchema = Schema({
         rankingpoints: { type: Number, default: 0 }
     }
 
+}, {
+    versionKey: false,
+    timestamps: true,
 });
-TeamSchema.plugin(require('mongoose-autopopulate'));
-module.exports = mongoose.model('Team', TeamSchema);
+// TeamSchema.plugin(require('mongoose-autopopulate'));
+module.exports = model('Team', TeamSchema);
 

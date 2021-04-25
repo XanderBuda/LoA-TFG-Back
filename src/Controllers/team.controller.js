@@ -3,6 +3,16 @@ var fs = require('fs');
 
 const teamController = {}
 
+teamController.getTeams = async (req, res) => {
+    try {
+        const teams = await Team.find();
+        if(!teams) return res.status(404).send({ message: `No hay equipos` });
+        res.status(200).json(teams);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}`});
+    }
+}
+
 teamController.getTeam = (req, res) => {
     var teamId = req.params.id;
     if (!teamId) {
@@ -11,14 +21,6 @@ teamController.getTeam = (req, res) => {
     Team.findById(teamId, (err, team) => {
         if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
         if (!team) return res.status(404).send({ message: 'El equipo no existe' });
-        return res.status(200).send({ team });
-    });
-}
-
-teamController.getTeams = (req, res) => {
-    Team.find({}, (err, team) => {
-        if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
-        if (!team) return res.status(404).send({ message: 'No hay equipos' });
         return res.status(200).send({ team });
     });
 }
