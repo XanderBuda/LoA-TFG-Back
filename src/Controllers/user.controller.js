@@ -12,8 +12,8 @@ userController.getUsers = async (req, res) => {
 
 
 userController.getUserById = async (req, res) => {
-    const { userId } = req.params;
-    await User.findById(userId, (err, user) => {
+    const { id } = req.params;
+    await User.findById(id, (err, user) => {
         if (err) return res.status(500).send({ message: `ERROR al realizar la peticion: ${err}` });
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
         res.status(200).send({ user });
@@ -43,7 +43,7 @@ userController.updateUser = async (req, res) => {
 }
 userController.deleteUser = async (req, res) => {
 
-    await User.findByIdAndRemove(req.params.userId, (err) => {
+    await User.findByIdAndRemove(req.params.id, (err) => {
         if (err) return res.status(500).send({ message: `ERROR al borrar el usuarios: ${err}` });
         res.status(200).send({ message: `El usuario ha sido borrado` });
     });

@@ -1,3 +1,21 @@
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
 
+### CREATE A NEW USER
+POST http://localhost:3700/user/new
+Content-Type: application/json
+
+{
+    "username": "ElCrack",
+    "email": "elcrack78@gmail.com",
+    "password": "123456789"
+}
+
+### FIND A USER FOR ID
+GET http://localhost:3700/user/60859758743afc1c34c2005b
+
+### DELETE A USER FOR ID
+DELETE http://localhost:3700/user/delete/60859758743afc1c34c2005b
+
+### ALL TEAMS REQUEST
+GET http://localhost:3700/team/all
