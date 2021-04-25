@@ -19,7 +19,7 @@ var userController ={
             res.status(200).send({user});
         })
     },
-    postUser: function(req, res){
+    newUser: function(req, res){
         let user = new User();
         user.username = req.body.username;
         user.email = req.body.email;
@@ -35,7 +35,7 @@ var userController ={
         let userId = req.params.userId;
         let update = req.body;
 
-        User.findByIdAndUpdate(userId,update,(err, userUpdate)=>{
+        User.findByIdAndUpdate(userId,update,{ new: true},(err, userUpdate)=>{
             if (err) return res.status(500).send({ message: `ERROR al actualiar el usuario: ${err}` });
             res.status(200).send({ user: userUpdate });
         });

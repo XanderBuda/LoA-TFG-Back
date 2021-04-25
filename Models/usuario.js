@@ -8,7 +8,7 @@ const UserSchema = Schema({
     picture: { type: String, default: null },
     email: String,
     password: String,
-    team: { type: Schema.ObjectId, ref: 'Team', default: null },
+    team: { type: Schema.ObjectId, ref: 'Team', autopopulate:true ,default: null },
     statistics: {
         victories: { type: Number, default: 0 },
         defeats: { type: Number, default: 0 },
@@ -20,5 +20,5 @@ const UserSchema = Schema({
         second: { type: String, enum: ['Toplane', 'Jungle', 'Midlane', 'Adc', 'Support',null], default: null },
     }
 });
-
+UserSchema.plugin(require('mongoose-autopopulate'));
 module.exports = mongoose.model('User', UserSchema);
