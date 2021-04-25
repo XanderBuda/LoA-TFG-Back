@@ -1,6 +1,4 @@
-'use strict'
-
-const User = require('../Models/user');
+const User = require('../Models/User');
 
 var userController = {};
 

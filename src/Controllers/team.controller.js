@@ -1,4 +1,4 @@
-const { Team } = require('../Models/equipo');
+const Team = require('../Models/Team');
 var fs = require('fs');
 
 const teamController = {}

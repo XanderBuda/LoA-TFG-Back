@@ -1,4 +1,4 @@
-var Tournament = require('../Models/torneo');
+const Tournament = require('../Models/Tournament');
 var fs = require('fs');
 
 var tournamentController = {

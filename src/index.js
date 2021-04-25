@@ -1,11 +1,9 @@
-'use strict'
-
 const mongoose = require('mongoose');
 const config = require('./Config/config');
 const app = require('./app');
 
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise; //creo que no hace falta
 mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
     if (err) {
         return console.log(`Error al conectar a la base de datos: ${err}`);
