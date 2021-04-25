@@ -28,6 +28,9 @@ var teamController = {
         var params = req.body;
 
         team.name = params.name;
+        team.users.first = params.admin;
+        team.admin = params.admin;
+        
         team.image = null;
 
 
@@ -97,6 +100,19 @@ var teamController = {
                 files: fileName
             });
         }
+    },
+    //Añadir usuarios al equipo después de la posición 1
+    addUser: (req, res) => {
+        var teamId = req.params.id; //Equipo a actualizar
+        var params = req.body; //User que se le va a asignar al Equipo
+
+        Team.findByIdAndUpdate(teamId, params, { new: true }, (err, teamUpdated) => {
+            if (err) return res.status(500).send({ message: 'Error al actualiar los datos' });
+            if (!teamUpdated) return res.status(404).send({ message: 'El equipo no existe' });
+            
+
+            return res.status(200).send({ team: teamUpdated });
+        });
     }
 
 };

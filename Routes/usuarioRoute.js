@@ -6,7 +6,7 @@ const userController = require('../Controllers/usuarioController');
 
 api.get('/users',userController.getUsers);
 api.get('/user/:userId?',userController.getUserById);
-api.post('/user',userController.postUser);
+api.post('/save-user',userController.postUser);
 api.put('/user/:userId',userController.updateUser);
 api.delete('/user/:userId',userController.deleteUser);
 

@@ -5,13 +5,13 @@ const Schema = mongoose.Schema;
 
 const TeamSchema = Schema({
     name: String,
-    admin: { type: Schema.ObjectId, ref: 'User' , default: null},
+    admin: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
     users: {
-        1: { type: Schema.ObjectId, ref: 'User', default: null },
-        2: { type: Schema.ObjectId, ref: 'User', default: null },
-        3: { type: Schema.ObjectId, ref: 'User', default: null },
-        4: { type: Schema.ObjectId, ref: 'User', default: null },
-        5: { type: Schema.ObjectId, ref: 'User', default: null },
+        first: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
+        second: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
+        third: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
+        fourth: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
+        five: { type: Schema.ObjectId, ref: 'User', autopopulate: true, default: null },
     },
     image: String,
     statistics: {
@@ -21,5 +21,6 @@ const TeamSchema = Schema({
     }
 
 });
-
+TeamSchema.plugin(require('mongoose-autopopulate'));
 module.exports = mongoose.model('Team', TeamSchema);
+
