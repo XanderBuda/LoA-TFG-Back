@@ -14,6 +14,17 @@ Content-Type: application/json
 ### FIND A USER FOR ID
 GET http://localhost:3700/user/60859758743afc1c34c2005b
 
+### UPDATE A USER FOR ID
+PUT http://localhost:3700/user/update/60859ad0a9ec93272c6f11d8
+Content-Type: application/json
+
+{
+    "roles": {
+        "first": "Toplane",
+        "second": "Adc"
+      }
+}
+
 ### DELETE A USER FOR ID
 DELETE http://localhost:3700/user/delete/60859758743afc1c34c2005b
 

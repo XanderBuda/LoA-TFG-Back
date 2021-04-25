@@ -35,8 +35,8 @@ userController.newUser = async (req, res) => {
 };
 
 userController.updateUser = async (req, res) => {
-    const { userId } = req.params;
-    await User.findByIdAndUpdate(userId, { $set: req.body }, { new: true }, (err, userUpdate) => {
+    const { id } = req.params;
+    await User.findByIdAndUpdate(id, { $set: req.body }, { new: true }, (err, userUpdate) => {
         if (err) return res.status(500).send({ message: `ERROR al actualiar el usuario: ${err}` });
         res.status(200).send({ user: userUpdate });
     });
