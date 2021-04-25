@@ -1,6 +1,6 @@
 const User = require('../Models/User');
 
-var userController = {};
+const userController = {};
 
 userController.getUsers = async (req, res) => {
     try {
@@ -10,8 +10,7 @@ userController.getUsers = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
     }
-}
-
+};
 
 userController.getUserById = async (req, res) => { 
     try {
@@ -43,7 +42,8 @@ userController.updateUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al actualiar el usuario: ${error}` });
     }
-}
+};
+
 userController.deleteUser = async (req, res) => {
     try {
         const userDelete = await User.findByIdAndRemove(req.params.id);
@@ -52,6 +52,6 @@ userController.deleteUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al borrar el usuarios: ${error}` });
     }
-}
+};
 
 module.exports = userController;

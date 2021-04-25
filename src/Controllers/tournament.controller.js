@@ -1,7 +1,7 @@
 const Tournament = require('../Models/Tournament');
-var fs = require('fs');
+const fs = require('fs');
 
-var tournamentController = {}
+const tournamentController = {};
 
 tournamentController.getTournament = async (req, res) => {
     try {
@@ -11,7 +11,6 @@ tournamentController.getTournament = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
     }
-
 };
 
 tournamentController.getTournaments = async (req, res) => {
@@ -24,10 +23,7 @@ tournamentController.getTournaments = async (req, res) => {
 
 tournamentController.saveTournament = async (req, res) => {
     try {
-        const tournament = new Tournament({
-            name: req.body.name,
-            size: req.body.size
-        });
+        const tournament = new Tournament(req.body);
         await tournament.save();
         if (!tournament) return res.status(404).send({ message: 'No se ha podido guardar el torneo' });
         res.status(200).json(tournament);
@@ -45,6 +41,7 @@ tournamentController.updateTournament = async (req, res) => {
         res.status(500).json({ message: `ERROR al actualiar el torneo: ${error}` });
     }
 };
+
 tournamentController.deleteTournament = async (req, res) => {
 
     try {
@@ -55,6 +52,7 @@ tournamentController.deleteTournament = async (req, res) => {
         res.status(500).json({ message: `ERROR al borrar el torneo: ${error}` });
     }
 };
+
 tournamentController.uploadLogo = async (req, res) => {
     var tournamentId = req.params.id;
     var fileName = "Imagen no subida...";
