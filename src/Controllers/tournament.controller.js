@@ -7,7 +7,7 @@ tournamentController.getTournament = async (req, res) => {
     try {
         const tournament = await Tournament.findById(req.params.id);
         if (!tournament) return res.status(404).send({ message: `El torneo no existe` });
-        res.status(200).json(user);
+        res.status(200).json(tournament);
     } catch (error) {
         res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
     }

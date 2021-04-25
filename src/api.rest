@@ -68,3 +68,29 @@ DELETE http://localhost:3700/team/delete/6085aa24ccd0e21b58659c42
 ########################################################################
 ### TOURNAMENTS ########################################################
 ########################################################################
+
+### ALL TOURNAMENTS REQUEST
+GET http://localhost:3700/tournament/all
+
+### CREATE A NEW TOURNAMENT
+POST http://localhost:3700/tournament/new
+Content-Type: application/json
+
+{
+    "name": "The Best Manins",
+    "size": 4
+}
+
+### FIND A TOURNAMENTS FOR ID
+GET http://localhost:3700/tournament/6085afe4fb473d6f4024ea71
+
+### UPDATE A TOURNAMENTS FOR ID
+PUT http://localhost:3700/tournament/update/6085afe4fb473d6f4024ea71
+Content-Type: application/json
+
+{
+    "size": 16
+}
+
+### DELETE A TOURNAMENTS FOR ID
+DELETE http://localhost:3700/tournament/delete/6085afe4fb473d6f4024ea71

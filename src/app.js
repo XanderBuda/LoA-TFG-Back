@@ -19,6 +19,6 @@ app.use(cors());
 //INTERCALADO DE RUTAS
 app.use('/user', userRoutes);
 app.use('/team', teamRoutes);
-app.use('/tournaments', tournamentRoutes);
+app.use('/tournament', tournamentRoutes);
 
 module.exports = app;
