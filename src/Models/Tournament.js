@@ -1,15 +1,14 @@
-'use strict'
+const { Schema, model } = require('mongoose');
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-
-const TorneoSchema = Schema({
-    admin: { type: Schema.ObjectId, ref: 'User' , default: null},
+const TorneoSchema = new Schema({
+    admin: { type: String, default: null },
     name: String,
     logo: { type: String, default: null },
     size: { type: Number, enum: [4, 8, 16] },
-    teams: { type: Schema.ObjectId, ref: 'Team', default: null}
+    teams: { type: String, default: null }
+}, {
+    versionKey: false,
+    timestamps: true,
 });
 
-module.exports = mongoose.model('Tournament', TorneoSchema);
+module.exports = model('Tournament', TorneoSchema);
