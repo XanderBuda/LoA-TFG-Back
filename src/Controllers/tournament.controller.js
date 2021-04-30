@@ -11,15 +11,17 @@ tournamentController.getTournament = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
     }
-};
+}
 
 tournamentController.getTournaments = async (req, res) => {
-    Tournament.find({}, (err, tournament) => {
+    try {
+        const tournaments = await Tournament.find();
+        if (tournaments.length == 0) return res.status(404).send({ message: 'No hay torneos' });
+        res.status(200).json(tournaments);
+    } catch (error) {
         if (err) return res.status(500).send({ message: 'Error al devolver los datos' });
-        if (!tournament) return res.status(404).send({ message: 'No hay equipos' });
-        return res.status(200).send({ tournament });
-    });
-};
+    }
+}
 
 tournamentController.saveTournament = async (req, res) => {
     try {
@@ -30,7 +32,7 @@ tournamentController.saveTournament = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al guardar el torneo: ${error}` });
     }
-};
+}
 
 tournamentController.updateTournament = async (req, res) => {
     try {
@@ -40,7 +42,7 @@ tournamentController.updateTournament = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al actualiar el torneo: ${error}` });
     }
-};
+}
 
 tournamentController.deleteTournament = async (req, res) => {
 
@@ -51,7 +53,7 @@ tournamentController.deleteTournament = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `ERROR al borrar el torneo: ${error}` });
     }
-};
+}
 
 tournamentController.uploadLogo = async (req, res) => {
     var tournamentId = req.params.id;
@@ -88,7 +90,52 @@ tournamentController.uploadLogo = async (req, res) => {
             files: fileName
         });
     }
-};
+}
+
+tournamentController.assignTeam = async (req, res) => {
+    try {
+        const { team } = req.body;
+
+        const editedTournament = await Tournament.findByIdAndUpdate(req.params.id, { $push: { teams: team } }, { new: true });
+        if (!editedTournament) return res.status(404).send({ message: 'El torneo no existe' });
+        res.status(200).json(editedTournament);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+    }
+}
+
+tournamentController.removeTeam = async (req, res) => {
+    try {
+        const { team } = req.body;
+
+        const editedTournament = await Tournament.findByIdAndUpdate(req.params.id, { $pull: { teams: team } }, { new: true });
+        if (!editedTournament) return res.status(404).send({ message: 'El torneo no existe' });
+        res.status(200).json(editedTournament);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+    }
+}
+
+tournamentController.assignAdmin = async (req, res) => {
+    try {
+        const { user } = req.body;
+        const editedTournament = await Tournament.findByIdAndUpdate(req.params.id, { $set: { admin: user } }, { new: true });
+        if (!editedTournament) return res.status(404).json({ message: 'El torneo no existe' });
+        return res.status(200).json(editedTournament);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+    }
+}
+
+tournamentController.getNumberOfTeams = async (req, res) => {
+    try {
+        const tournament = await Tournament.findById(req.params.id);
+        if (tournament.teams.length == 0) return res.status(404).send({ message: `El torneo no tiene equipos` });
+        res.status(200).json(tournament.teams.length);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+    }
+}
 
 
 module.exports = tournamentController;

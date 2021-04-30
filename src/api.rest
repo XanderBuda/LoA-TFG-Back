@@ -10,9 +10,9 @@ POST http://localhost:3700/user/new
 Content-Type: application/json
 
 {
-    "username": "ElCrack",
-    "email": "elcrack78@gmail.com",
-    "password": "123456789"
+    "username": "ElNiggi",
+    "email": "elcrack8@gmail.com",
+    "password": "12345679"
 }
 
 ### FIND A USER FOR ID
@@ -30,7 +30,10 @@ Content-Type: application/json
 }
 
 ### DELETE A USER FOR ID
-DELETE http://localhost:3700/user/delete/60859758743afc1c34c2005b
+DELETE http://localhost:3700/user/delete/60854371ea479c1fb05d3c60
+
+### GET TEAM BY USER REQUEST
+GET http://localhost:3700/user/getTeam?username=ElNiggi
 
 ########################################################################
 ### TEAMS ##############################################################
@@ -39,16 +42,23 @@ DELETE http://localhost:3700/user/delete/60859758743afc1c34c2005b
 ### ALL TEAMS REQUEST
 GET http://localhost:3700/team/all
 
+### GET TOURNAMENT BY TEAM REQUEST
+GET http://localhost:3700/team/getTournament?name=TEAM+REVEN
+
 ### CREATE A NEW TEAM
 POST http://localhost:3700/team/new
 Content-Type: application/json
 
 {
-    "name": "TEAM IBAI"
+    "name": "TEAM RAULLL"
 }
 
 ### FIND A TEAM FOR ID
-GET http://localhost:3700/team/6085aa24ccd0e21b58659c42
+GET http://localhost:3700/team/608be39fea78be2c3c47e63b
+
+### FIND NUMBER OF USERS IN A TEAM
+GET http://localhost:3700/team/numberOfUsers/608be39fea78be2c3c47e63b
+
 
 ### UPDATE A TEAM FOR ID
 PUT http://localhost:3700/team/update/6085aa24ccd0e21b58659c42
@@ -63,7 +73,31 @@ Content-Type: application/json
 }
 
 ### DELETE A TEAM FOR ID
-DELETE http://localhost:3700/team/delete/6085aa24ccd0e21b58659c42
+DELETE http://localhost:3700/team/delete/608bfc3da57d3f26d480560f
+
+### ASSIGN A USER FOR A TEAM
+PUT http://localhost:3700/team/assignUser/608be39fea78be2c3c47e63b
+Content-Type: application/json
+
+{
+    "user": "608be60abb89ac0d8012df93"
+}
+
+### REMOVE A USER FROM A TEAM
+PUT http://localhost:3700/team/removeUser/608be39fea78be2c3c47e63b
+Content-Type: application/json
+
+{
+    "user": "608be60abb89ac0d8012df93"
+}
+
+### ASSIGN ADMIN FOR A TEAM
+PUT http://localhost:3700/team/assignAdmin/608be39fea78be2c3c47e63b
+Content-Type: application/json
+
+{
+    "user": "608be60abb89ac0d8012df93"
+}
 
 ########################################################################
 ### TOURNAMENTS ########################################################
@@ -82,7 +116,10 @@ Content-Type: application/json
 }
 
 ### FIND A TOURNAMENTS FOR ID
-GET http://localhost:3700/tournament/6085afe4fb473d6f4024ea71
+GET http://localhost:3700/tournament/608c0e519b4caf370417cfd5
+
+### FIND NUMBER OF TEAMS IN A TOURNAMENT
+GET http://localhost:3700/tournament/numberOfTeams/608c0e519b4caf370417cfd5
 
 ### UPDATE A TOURNAMENTS FOR ID
 PUT http://localhost:3700/tournament/update/6085afe4fb473d6f4024ea71
@@ -94,3 +131,27 @@ Content-Type: application/json
 
 ### DELETE A TOURNAMENTS FOR ID
 DELETE http://localhost:3700/tournament/delete/6085afe4fb473d6f4024ea71
+
+### ASSIGN A TEAM FOR A TOURNAMENT
+PUT http://localhost:3700/tournament/assignTeam/608c0e519b4caf370417cfd5
+Content-Type: application/json
+
+{
+    "team": "608be39fea78be2c3c47e63b"
+}
+
+### REMOVE A TEAM FROM A TOURNAMENT
+PUT http://localhost:3700/tournament/removeTeam/608c0e519b4caf370417cfd5
+Content-Type: application/json
+
+{
+    "team": "608be39fea78be2c3c47e63b"
+}
+
+### ASSIGN ADMIN FOR A TOURNAMENT
+PUT http://localhost:3700/tournament/assignAdmin/608c0e519b4caf370417cfd5
+Content-Type: application/json
+
+{
+    "user": "608be60abb89ac0d8012df93"
+}

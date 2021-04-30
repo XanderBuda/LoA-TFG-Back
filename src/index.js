@@ -4,7 +4,7 @@ const app = require('./app');
 
 
 mongoose.Promise = global.Promise; //creo que no hace falta
-mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
+mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }, (err, res) => {
     if (err) {
         return console.log(`Error al conectar a la base de datos: ${err}`);
     }

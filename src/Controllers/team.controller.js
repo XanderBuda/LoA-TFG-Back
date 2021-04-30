@@ -1,4 +1,5 @@
 const Team = require('../Models/Team');
+const Tournament = require('../Models/Tournament');
 const fs = require('fs');
 
 const teamController = {};
@@ -78,6 +79,64 @@ teamController.uploadLogo = async (req, res) => {
         }
     } else {
         res.status(200).json(fileName);
+    }
+}
+
+teamController.assignUser = async (req, res) => {
+    try {
+        const { user } = req.body;
+        const editedTeam = await Team.findByIdAndUpdate(req.params.id, { $push: { users: user } }, { new: true });
+        if (!editedTeam) return res.status(404).json({ message: 'El equipo no existe' });
+        return res.status(200).json(editedTeam);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+    }
+}
+
+teamController.removeUser = async (req, res) => {
+    try {
+        const { user } = req.body;
+        const editedTeam = await Team.findByIdAndUpdate(req.params.id, { $pull: { users: user } }, { new: true });
+        if (!editedTeam) return res.status(404).json({ message: 'El usuario no se puede eliminar del equipo' });
+        return res.status(200).json(editedTeam);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+    }
+}
+
+teamController.assignAdmin = async (req, res) => {
+    try {
+        const { user } = req.body;
+        const editedTeam = await Team.findByIdAndUpdate(req.params.id, { $set: { admin: user } }, { new: true });
+        if (!editedTeam) return res.status(404).json({ message: 'El equipo no existe' });
+        return res.status(200).json(editedTeam);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+    }
+}
+
+teamController.getNumberOfUsers = async (req, res) => {
+    try {
+        const team = await Team.findById(req.params.id);
+        if (team.users.length == 0) return res.status(404).json({ message: 'El equipo no tiene usuarios' });
+        res.status(200).json(team.users.length);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+    }
+}
+
+teamController.getTournament = async (req, res) => {
+    const { name } = req.query; //nombre del equipo a buscar en un torneo
+    try {
+        const tournament = await Tournament.find({ teams: { $not: { $size: 0 } } }).populate({ path: 'teams', match: { name: name } });
+        
+        const teamTournament = tournament.filter((tournament) => tournament.teams.length > 0);
+
+        if (teamTournament.length === 0) return res.status(404).json({ message: `Este equipo no participa en ningún torneo` });
+        console.log(teamTournament);
+        res.status(200).json(teamTournament[0].name);
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
     }
 }
 

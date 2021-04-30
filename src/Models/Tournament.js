@@ -2,10 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const TorneoSchema = new Schema({
     name: { type: String, required: true },
-    admin: { type: Schema.Types.ObjectId, ref: 'users' },
+    admin: { type: Schema.Types.ObjectId, ref: 'User', default: null },
     logo: { type: String, default: null },
     size: { type: Number, enum: [4, 8, 16], required: true },
-    teams: [{ type: Schema.Types.ObjectId, ref: 'teams' }]
+    teams: [{ type: Schema.Types.ObjectId, ref: 'Team' }]
 }, {
     versionKey: false,
     timestamps: true,
