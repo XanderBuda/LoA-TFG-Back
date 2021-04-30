@@ -1,15 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const TeamSchema = new Schema({
-    name: { type: String, require: true },
-    admin: { type: String, default: null },
-    users: {
-        first: { type: String, default: null },
-        second: { type: String, default: null },
-        third: { type: String, default: null },
-        fourth: { type: String, default: null },
-        five: { type: String, default: null },
-    },
+    name: { type: String, required: true },
+    admin: { type: Schema.Types.ObjectId, ref: 'users' },
+    users: [{ type: Schema.Types.ObjectId, ref: 'users' }],
     image: { type: String, default: null },
     statistics: {
         victories: { type: Number, default: 0 },

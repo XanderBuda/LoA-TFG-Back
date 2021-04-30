@@ -1,11 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
-    username: String,
+    username: { type: String, required: true, unique: true },
     picture: { type: String, default: null },
-    email: String,
-    password: String,
-    team: { type: String, default: null },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
     statistics: {
         victories: { type: Number, default: 0 },
         defeats: { type: Number, default: 0 },
