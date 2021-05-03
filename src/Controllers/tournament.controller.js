@@ -24,8 +24,10 @@ tournamentController.getTournaments = async (req, res) => {
 }
 
 tournamentController.saveTournament = async (req, res) => {
+
     try {
-        const tournament = new Tournament(req.body);
+        const _id = req.id;
+        const tournament = new Tournament({ admin: _id, ...req.body });
         await tournament.save();
         if (!tournament) return res.status(404).send({ message: 'No se ha podido guardar el torneo' });
         res.status(200).json(tournament);
@@ -96,7 +98,12 @@ tournamentController.assignTeam = async (req, res) => {
     try {
         //EL TORNEO ESTÁ LLENO
         const tournament = await Tournament.findById(req.params.id);
-        if(tournament.teams.length >= tournament.size) return res.status(404).send({ message: `El torneo está lleno` });
+        if (tournament.teams.length >= tournament.size) return res.status(404).send({ message: `El torneo está lleno` });
+        let encontrado = false;
+        tournament.teams.forEach(element => {
+            if (element == req.body.team) { encontrado = true }
+        });
+        if (encontrado) return res.status(404).json({ message: 'El equipo ya está en el torneo' });
         //####################
 
         const { team } = req.body;

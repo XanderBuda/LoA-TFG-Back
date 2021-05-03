@@ -26,7 +26,8 @@ teamController.getTeam = async (req, res) => {
 
 teamController.createTeam = async (req, res) => {
     try {
-        const newTeam = new Team(req.body);
+        const _id = req.id;
+        const newTeam = new Team({ admin: _id, users: _id, ...req.body }); //Al crear equipo el admin y el primer integrante es el creador del equipo
         await newTeam.save();
         if (!newTeam) return res.status(404).json({ message: 'No se ha podido guardar el equipo' });
         res.status(200).json({ message: 'Equipo guardado correctamente' });
@@ -88,6 +89,11 @@ teamController.assignUser = async (req, res) => {
         //EL EQUIPO ESTÁ LLENO
         const team = await Team.findById(req.params.id);
         if (team.users.length >= 5) return res.status(404).json({ message: 'El equipo está lleno' });
+        let encontrado = false;
+        team.users.forEach(element => {
+            if (element == req.body.user) { encontrado = true }
+        });
+        if (encontrado) return res.status(404).json({ message: 'El usuario ya está en el equipo' });
         //####################
 
         const { user } = req.body;
@@ -140,7 +146,8 @@ teamController.getTournament = async (req, res) => {
 
         if (teamTournament.length === 0) return res.status(404).json({ message: `Este equipo no participa en ningún torneo` });
         console.log(teamTournament);
-        res.status(200).json(teamTournament[0].name);
+        //res.status(200).json(teamTournament[0].name);
+        res.status(200).json(teamTournament);
     } catch (error) {
         res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
     }

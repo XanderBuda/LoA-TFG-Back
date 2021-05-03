@@ -21,9 +21,19 @@ validations.postTeamChecks = [
     validator
 ]
 
+validations.putTeamUserChecks = [
+    check('user', 'El id del Usuario debe ser válido').trim().isMongoId(),
+    validator
+]
+
 validations.postTournamentChecks = [
     check('name', 'Name is required').trim().not().isEmpty(),
     check('size', 'Size is required').trim().not().isEmpty(),
+    validator
+]
+
+validations.putTournamentTeamChecks = [
+    check('team', 'El id del Equipo debe ser válido').trim().isMongoId(),
     validator
 ]
 

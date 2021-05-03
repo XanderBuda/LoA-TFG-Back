@@ -17,12 +17,12 @@ Content-Type: application/json
 }
 
 ### FIND A USER FOR ID
-GET http://localhost:3700/user/60859758743afc1c34c2005b
+GET http://localhost:3700/user/60854371ea479c1fb05d3c60
 
 ### UPDATE A USER FOR ID
 PUT http://localhost:3700/user/update/60859ad0a9ec93272c6f11d8
 Content-Type: application/json
-
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 {
     "roles": {
@@ -33,6 +33,7 @@ Content-Type: application/json
 
 ### DELETE A USER FOR ID
 DELETE http://localhost:3700/user/delete/60854371ea479c1fb05d3c60
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 ### GET TEAM BY USER REQUEST
 GET http://localhost:3700/user/getTeam?username=ElNiggi
@@ -45,11 +46,12 @@ GET http://localhost:3700/user/getTeam?username=ElNiggi
 GET http://localhost:3700/team/all
 
 ### GET TOURNAMENT BY TEAM REQUEST
-GET http://localhost:3700/team/getTournament?name=TEAM+REVEN
+GET http://localhost:3700/team/getTournament?name=TEAM+REVE
 
 ### CREATE A NEW TEAM
 POST http://localhost:3700/team/new
 Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 {
     "name": "TEAM RAULLL"
@@ -65,6 +67,7 @@ GET http://localhost:3700/team/numberOfUsers/608be39fea78be2c3c47e63b
 ### UPDATE A TEAM FOR ID
 PUT http://localhost:3700/team/update/6085aa24ccd0e21b58659c42
 Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 {
     "statistics": {
@@ -78,27 +81,20 @@ Content-Type: application/json
 DELETE http://localhost:3700/team/delete/608bfc3da57d3f26d480560f
 
 ### ASSIGN A USER FOR A TEAM
-PUT http://localhost:3700/team/assignUser/608be39fea78be2c3c47e63b
+PUT http://localhost:3700/team/assignUser/609036c170d03d16b89da151
 Content-Type: application/json
 
 {
-    "user": "608be60abb89ac0d8012df93"
+    "user": "60900ce7e308fc1fb0d5bf78"
 }
 
 ### REMOVE A USER FROM A TEAM
-PUT http://localhost:3700/team/removeUser/608be39fea78be2c3c47e63b
+PUT http://localhost:3700/team/removeUser/609036c170d03d16b89da151
 Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 {
-    "user": "608be60abb89ac0d8012df93"
-}
-
-### ASSIGN ADMIN FOR A TEAM
-PUT http://localhost:3700/team/assignAdmin/608be39fea78be2c3c47e63b
-Content-Type: application/json
-
-{
-    "user": "608be60abb89ac0d8012df93"
+    "user": "60900ce7e308fc1fb0d5bf78"
 }
 
 ########################################################################
@@ -111,6 +107,7 @@ GET http://localhost:3700/tournament/all
 ### CREATE A NEW TOURNAMENT
 POST http://localhost:3700/tournament/new
 Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 {
     "name": "The Best Manins",
@@ -126,6 +123,7 @@ GET http://localhost:3700/tournament/numberOfTeams/608c0e519b4caf370417cfd5
 ### UPDATE A TOURNAMENTS FOR ID
 PUT http://localhost:3700/tournament/update/608c0e519b4caf370417cfd5
 Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 {
     "size": 8
@@ -150,14 +148,6 @@ Content-Type: application/json
     "team": "608be39fea78be2c3c47e63b"
 }
 
-### ASSIGN ADMIN FOR A TOURNAMENT
-PUT http://localhost:3700/tournament/assignAdmin/608c0e519b4caf370417cfd5
-Content-Type: application/json
-
-{
-    "user": "608be60abb89ac0d8012df93"
-}
-
 ########################################################################
 ### LOGIN ##############################################################
 ########################################################################
@@ -170,3 +160,7 @@ Content-Type: application/json
     "email": "elcracks8@gmail.com",
     "password": "123456"
 }
+
+### RENOVAR TOKEN USUARIO
+GET http://localhost:3700/login/renew
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ

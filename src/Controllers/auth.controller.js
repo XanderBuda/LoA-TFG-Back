@@ -17,11 +17,18 @@ const login = async (req, res) => {
 
         const token = await generarJWT(userDB.id);
 
-        res.status(200).json({ message: 'Login correcto', token:token });
+        res.status(200).json({ message: 'Login correcto', token: token });
 
     } catch (error) {
         res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
     }
 }
 
-module.exports = { login };
+const renewToken = async (req, res) => {
+    const _id = req.id;
+    const token = await generarJWT(_id);
+
+    res.status(200).json({token_renovado:token});
+
+}
+module.exports = { login, renewToken };
