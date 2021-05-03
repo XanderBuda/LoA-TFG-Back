@@ -1,6 +1,7 @@
 const User = require('../Models/User');
 const Team = require('../Models/Team');
 
+
 const userController = {};
 
 userController.getUsers = async (req, res) => {
@@ -24,6 +25,9 @@ userController.getUserById = async (req, res) => {
 }
 
 userController.newUser = async (req, res) => {
+
+    const { username, email, password } = req.body;
+
     try {
         const user = new User(req.body);
         await user.save();

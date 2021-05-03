@@ -20,7 +20,9 @@
   "dependencies": {
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.10.1",
     "mongoose": "^5.12.5",
     "mongoose-autopopulate": "^0.13.0",
     "morgan": "^1.10.0"
