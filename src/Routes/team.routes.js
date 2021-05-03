@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const validations = require('../Middlewares/field-validator');
 const router = Router();
 
 const teamController = require('../Controllers/team.controller');
@@ -7,7 +8,7 @@ router.get('/all', teamController.getTeams);
 router.get('/getTournament', teamController.getTournament);
 router.get('/:id?', teamController.getTeam);
 router.get('/numberOfUsers/:id', teamController.getNumberOfUsers);
-router.post('/new', teamController.createTeam);
+router.post('/new', validations.postTeamChecks, teamController.createTeam);
 router.put('/update/:id', teamController.editTeam);
 router.put('/assignUser/:id', teamController.assignUser);
 router.put('/removeUser/:id', teamController.removeUser);

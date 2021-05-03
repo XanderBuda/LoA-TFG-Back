@@ -4,15 +4,16 @@
 
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
 
 ### CREATE A NEW USER
 POST http://localhost:3700/user/new
 Content-Type: application/json
 
 {
-    "username": "Hey",
-    "email": "elcracks8@gmail.com",
-    "password": "123456"
+    "username": "Hey5",
+    "email": "elcracks86@gmail.com",
+    "password": "1234567"
 }
 
 ### FIND A USER FOR ID
@@ -21,6 +22,7 @@ GET http://localhost:3700/user/60859758743afc1c34c2005b
 ### UPDATE A USER FOR ID
 PUT http://localhost:3700/user/update/60859ad0a9ec93272c6f11d8
 Content-Type: application/json
+
 
 {
     "roles": {
@@ -154,4 +156,17 @@ Content-Type: application/json
 
 {
     "user": "608be60abb89ac0d8012df93"
+}
+
+########################################################################
+### LOGIN ##############################################################
+########################################################################
+
+### MATCH DEL USUARIO A LOGEAR
+POST http://localhost:3700/login
+Content-Type: application/json
+
+{
+    "email": "elcracks8@gmail.com",
+    "password": "123456"
 }

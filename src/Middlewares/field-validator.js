@@ -27,5 +27,10 @@ validations.postTournamentChecks = [
     validator
 ]
 
+validations.postLogin = [
+    check('email', 'Email is required').trim().isEmail(),
+    check('password', 'Password is required').trim().not().isEmpty(),
+    validator
+]
 
 module.exports = validations;

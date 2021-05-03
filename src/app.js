@@ -7,6 +7,7 @@ const app = express();
 var userRoutes = require('./Routes/user.routes');
 var teamRoutes = require('./Routes/team.routes');
 var tournamentRoutes = require('./Routes/tournament.routes');
+var auth = require('./Routes/auth.routes');
 
 //MIDDLEWARES
 app.use(express.urlencoded({ extended: false }));
@@ -20,5 +21,6 @@ app.use(cors());
 app.use('/user', userRoutes);
 app.use('/team', teamRoutes);
 app.use('/tournament', tournamentRoutes);
+app.use('/login', auth);
 
 module.exports = app;
