@@ -10,9 +10,9 @@ POST http://localhost:3700/user/new
 Content-Type: application/json
 
 {
-    "username": "",
-    "email": "elcrack8@gmail.com",
-    "password": "12345679"
+    "username": "Hey",
+    "email": "elcracks8@gmail.com",
+    "password": "123456"
 }
 
 ### FIND A USER FOR ID
@@ -122,11 +122,11 @@ GET http://localhost:3700/tournament/608c0e519b4caf370417cfd5
 GET http://localhost:3700/tournament/numberOfTeams/608c0e519b4caf370417cfd5
 
 ### UPDATE A TOURNAMENTS FOR ID
-PUT http://localhost:3700/tournament/update/6085afe4fb473d6f4024ea71
+PUT http://localhost:3700/tournament/update/608c0e519b4caf370417cfd5
 Content-Type: application/json
 
 {
-    "size": 16
+    "size": 8
 }
 
 ### DELETE A TOURNAMENTS FOR ID

@@ -1,6 +1,6 @@
 const User = require('../Models/User');
 const Team = require('../Models/Team');
-
+const bcrypt = require('bcryptjs');
 
 const userController = {};
 
@@ -30,6 +30,11 @@ userController.newUser = async (req, res) => {
 
     try {
         const user = new User(req.body);
+
+        //Encrypter de la password
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(password, salt);
+
         await user.save();
         if (!user) return res.status(404).send({ message: 'No se ha podido guardar el usuario' });
         res.status(200).json(user);

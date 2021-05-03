@@ -83,7 +83,13 @@ teamController.uploadLogo = async (req, res) => {
 }
 
 teamController.assignUser = async (req, res) => {
+
     try {
+        //EL EQUIPO ESTÁ LLENO
+        const team = await Team.findById(req.params.id);
+        if (team.users.length >= 5) return res.status(404).json({ message: 'El equipo está lleno' });
+        //####################
+
         const { user } = req.body;
         const editedTeam = await Team.findByIdAndUpdate(req.params.id, { $push: { users: user } }, { new: true });
         if (!editedTeam) return res.status(404).json({ message: 'El equipo no existe' });
@@ -129,7 +135,7 @@ teamController.getTournament = async (req, res) => {
     const { name } = req.query; //nombre del equipo a buscar en un torneo
     try {
         const tournament = await Tournament.find({ teams: { $not: { $size: 0 } } }).populate({ path: 'teams', match: { name: name } });
-        
+
         const teamTournament = tournament.filter((tournament) => tournament.teams.length > 0);
 
         if (teamTournament.length === 0) return res.status(404).json({ message: `Este equipo no participa en ningún torneo` });

@@ -94,6 +94,11 @@ tournamentController.uploadLogo = async (req, res) => {
 
 tournamentController.assignTeam = async (req, res) => {
     try {
+        //EL TORNEO ESTÁ LLENO
+        const tournament = await Tournament.findById(req.params.id);
+        if(tournament.teams.length >= tournament.size) return res.status(404).send({ message: `El torneo está lleno` });
+        //####################
+
         const { team } = req.body;
 
         const editedTournament = await Tournament.findByIdAndUpdate(req.params.id, { $push: { teams: team } }, { new: true });
