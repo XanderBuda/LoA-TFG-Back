@@ -38,7 +38,7 @@ validations.putTournamentTeamChecks = [
 ]
 
 validations.postLogin = [
-    check('email', 'Email is required').trim().isEmail(),
+    check('username', 'Username is required').trim().not().isEmpty(),
     check('password', 'Password is required').trim().not().isEmpty(),
     validator
 ]

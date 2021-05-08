@@ -158,8 +158,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "email": "elcracks8@gmail.com",
-    "password": "123456"
+    "username": "UwU",
+    "password": "jeje"
 }
 
 ### RENOVAR TOKEN USUARIO
