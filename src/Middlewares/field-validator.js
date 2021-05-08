@@ -43,4 +43,10 @@ validations.postLogin = [
     validator
 ]
 
+// validations.postPetitionUserToAdmin = [
+//     check('email', 'Email is required').trim().isEmail(),
+//     check('password', 'Password is required').trim().not().isEmpty(),
+//     validator
+// ]
+
 module.exports = validations;
