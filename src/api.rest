@@ -4,16 +4,16 @@
 
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
-
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA0OTM2NzYsImV4cCI6MTYyMDUzNjg3Nn0.a2kVN0m8yaKhmJ26EmR7i_UnC79I2KVIj8umcbreUTc
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2Y2JkOGQxMDgyNDY4MjAzZDRmMTgiLCJpYXQiOjE2MjA0OTUzMjAsImV4cCI6MTYyMDUzODUyMH0.Qyn_mT2hLbR_Z6bL6TekbQnHLR85JRaiH6uOVRSK9Ug - OWO
 ### CREATE A NEW USER
 POST http://localhost:3700/user/new
 Content-Type: application/json
 
 {
-    "username": "Hey5",
-    "email": "elcracks86@gmail.com",
-    "password": "1234567"
+    "username": "OwO",
+    "email": "owo@gmail.com",
+    "password": "jojo"
 }
 
 ### FIND A USER FOR ID
@@ -32,8 +32,9 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 }
 
 ### DELETE A USER FOR ID
-DELETE http://localhost:3700/user/delete/60854371ea479c1fb05d3c60
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+DELETE http://localhost:3700/user/delete/6085a53ed802d9523cba9887
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA0OTM2NzYsImV4cCI6MTYyMDUzNjg3Nn0.a2kVN0m8yaKhmJ26EmR7i_UnC79I2KVIj8umcbreUTc
+
 
 ### GET TEAM BY USER REQUEST
 GET http://localhost:3700/user/getTeam?username=ElNiggi
@@ -51,7 +52,7 @@ GET http://localhost:3700/team/getTournament?name=TEAM+REVE
 ### CREATE A NEW TEAM
 POST http://localhost:3700/team/new
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA0OTM2NzYsImV4cCI6MTYyMDUzNjg3Nn0.a2kVN0m8yaKhmJ26EmR7i_UnC79I2KVIj8umcbreUTc
 
 {
     "name": "TEAM RAULLL"
@@ -164,3 +165,14 @@ Content-Type: application/json
 ### RENOVAR TOKEN USUARIO
 GET http://localhost:3700/login/renew
 x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+
+
+########################################################################
+#### PETITION ##########################################################
+########################################################################
+
+### Peticion del usuario para entrar en un equipo
+POST http://localhost:3700/petition/userToAdmin?teamId=6096cb0ed1082468203d4f17
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2Y2JkOGQxMDgyNDY4MjAzZDRmMTgiLCJpYXQiOjE2MjA0OTUzMjAsImV4cCI6MTYyMDUzODUyMH0.Qyn_mT2hLbR_Z6bL6TekbQnHLR85JRaiH6uOVRSK9Ug
+
