@@ -8,6 +8,7 @@ const userController = require('../Controllers/user.controller');
 //validarJWT protege las rutas exigiendo un token en los headers de la petición
 router.get('/all', validarJWT, userController.getUsers);
 router.get('/getTeam', userController.getTeam);
+router.get('/getAllPetitionsForTheUser', validarJWT ,userController.getAllPetitionsForTheUser);
 router.get('/:id?', userController.getUserById);
 router.post('/new', validations.postUserChecks, userController.newUser);
 router.put('/update/:id', validarJWT, userController.updateUser);
