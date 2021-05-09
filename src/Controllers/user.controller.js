@@ -93,7 +93,7 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
 
         const _id = req.id;
 
-        const petitions = await Petition.find().populate({ path: 'petitions', match: { receiver: _id } });
+        const petitions = await Petition.find();
 
         const userPetitions = petitions.filter((petition) => petition.receiver == _id);
 
