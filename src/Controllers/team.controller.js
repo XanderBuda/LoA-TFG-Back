@@ -138,7 +138,9 @@ teamController.getNumberOfUsers = async (req, res) => {
 }
 
 teamController.getTournament = async (req, res) => {
-    const { name } = req.query; //nombre del equipo a buscar en un torneo
+    const { name } = req.query; //nombre del equipo a buscar en un torneo, sdfgvsdfg/?teamname=pedro
+    //                                                                                   adfgsdfgd/:id
+                                                                          
     try {
         const tournament = await Tournament.find({ teams: { $not: { $size: 0 } } }).populate({ path: 'teams', match: { name: name } });
 
