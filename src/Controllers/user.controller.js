@@ -18,7 +18,6 @@ userController.getUsers = async (req, res) => {
 
 userController.getUserById = async (req, res) => {
     try {
-
         const user = await User.findById(req.params.id);
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
         res.status(200).json(user);
@@ -98,7 +97,7 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         const userPetitions = petitions.filter((petition) => petition.receiver == _id);
 
 
-    if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene petitiones pendientes` });
+    if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiones pendientes` });
 
     res.status(200).json(userPetitions);
 
