@@ -97,13 +97,13 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         const userPetitions = petitions.filter((petition) => petition.receiver == _id);
 
 
-    if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiones pendientes` });
+        if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiones pendientes` });
 
-    res.status(200).json(userPetitions);
+        res.status(200).json(userPetitions);
 
-} catch (error) {
-    res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
-};
-};
+    } catch (error) {
+        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+    };
+}
 
 module.exports = userController;
