@@ -1,19 +1,21 @@
+// Token en activo
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2Y2JkOGQxMDgyNDY4MjAzZDRmMTgiLCJpYXQiOjE2MjA0OTUzMjAsImV4cCI6MTYyMDUzODUyMH0.Qyn_mT2hLbR_Z6bL6TekbQnHLR85JRaiH6uOVRSK9Ug - OWO
+
 #######################################################################
 ### USER ##############################################################
 #######################################################################
 
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
-
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NzA1NjMsImV4cCI6MTYyMDYxMzc2M30.M3h9RbY2CzctxJNgwwDD-x6V8hLSvIzp6YNEVefTAeE
 ### CREATE A NEW USER
 POST http://localhost:3700/user/new
 Content-Type: application/json
 
 {
-    "username": "Hey5",
-    "email": "elcracks86@gmail.com",
-    "password": "1234567"
+    "username": "Pepe",
+    "email": "pepe@gmail.com",
+    "password": "pepe"
 }
 
 ### FIND A USER FOR ID
@@ -32,11 +34,16 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 }
 
 ### DELETE A USER FOR ID
-DELETE http://localhost:3700/user/delete/60854371ea479c1fb05d3c60
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+DELETE http://localhost:3700/user/delete/6085a53ed802d9523cba9887
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA0OTM2NzYsImV4cCI6MTYyMDUzNjg3Nn0.a2kVN0m8yaKhmJ26EmR7i_UnC79I2KVIj8umcbreUTc
+
 
 ### GET TEAM BY USER REQUEST
 GET http://localhost:3700/user/getTeam?username=ElNiggi
+
+### FIND ALL PETITIONS FOR ONE USER
+GET http://localhost:3700/user/getAllPetitionsForTheUser
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1ODYyMDEsImV4cCI6MTYyMDYyOTQwMX0.fm4ZJTmdN_ra00OkrRTYUAAxffWXWTn8gNyhikMv37A
 
 ########################################################################
 ### TEAMS ##############################################################
@@ -51,10 +58,10 @@ GET http://localhost:3700/team/getTournament?name=TEAM+REVE
 ### CREATE A NEW TEAM
 POST http://localhost:3700/team/new
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk3ZjU4YzNiYjQ1YzQ2NDhmY2FjY2QiLCJpYXQiOjE2MjA1NzE1MzIsImV4cCI6MTYyMDYxNDczMn0.D52VNKRNPyMG6cXOfhDc7KO5jy-SZZ_2m7qo5fDPBbQ
 
 {
-    "name": "TEAM RAULLL"
+    "name": "Squalidos"
 }
 
 ### FIND A TEAM FOR ID
@@ -67,7 +74,7 @@ GET http://localhost:3700/team/numberOfUsers/608be39fea78be2c3c47e63b
 ### UPDATE A TEAM FOR ID
 PUT http://localhost:3700/team/update/6085aa24ccd0e21b58659c42
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NjY3MTUsImV4cCI6MTYyMDYwOTkxNX0.15nJQiCX5m-Pvykf54swFJUKlJ_BIKIVnGoOE1UZbvs
 
 {
     "statistics": {
@@ -79,7 +86,7 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 
 ### DELETE A TEAM FOR ID
 DELETE http://localhost:3700/team/delete/608bfc3da57d3f26d480560f
-
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NjY3MTUsImV4cCI6MTYyMDYwOTkxNX0.15nJQiCX5m-Pvykf54swFJUKlJ_BIKIVnGoOE1UZbvs
 ### ASSIGN A USER FOR A TEAM
 PUT http://localhost:3700/team/assignUser/609036c170d03d16b89da151
 Content-Type: application/json
@@ -107,10 +114,10 @@ GET http://localhost:3700/tournament/all
 ### CREATE A NEW TOURNAMENT
 POST http://localhost:3700/tournament/new
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NzE5ODgsImV4cCI6MTYyMDYxNTE4OH0.6-7v0iG2G3v-pYpjr4DN_3T3Ne0kKm6GkTO7mUbpCyI
 
 {
-    "name": "The Best Manins",
+    "name": "The final noobs",
     "size": 4
 }
 
@@ -130,7 +137,8 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 }
 
 ### DELETE A TOURNAMENTS FOR ID
-DELETE http://localhost:3700/tournament/delete/6085afe4fb473d6f4024ea71
+DELETE http://localhost:3700/tournament/delete/6085afc6fb473d6f4024ea70
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NjY4NjYsImV4cCI6MTYyMDYxMDA2Nn0.q8IiXvWC6tCRu3vAiLMHsQp8OYXhQHTGixRbQ-HuKVA
 
 ### ASSIGN A TEAM FOR A TOURNAMENT
 PUT http://localhost:3700/tournament/assignTeam/608c0e519b4caf370417cfd5
@@ -157,10 +165,48 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "email": "elcracks8@gmail.com",
-    "password": "123456"
+    "username": "UwU",
+    "password": "jeje"
 }
 
 ### RENOVAR TOKEN USUARIO
 GET http://localhost:3700/login/renew
 x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+
+
+########################################################################
+#### PETITION ##########################################################
+########################################################################
+
+### Peticion del usuario para entrar en un equipo
+POST http://localhost:3700/petition/userToAdmin?teamId=6096cb0ed1082468203d4f17
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2Y2JkOGQxMDgyNDY4MjAzZDRmMTgiLCJpYXQiOjE2MjA1Nzk1MDQsImV4cCI6MTYyMDYyMjcwNH0.xlG8uzt9CKRhXexO-Ug8Ac32PedqXUKU7QsXPcw6HTs
+
+### Peticion del usuario para entrar a un torneo
+POST http://localhost:3700/petition/userToAdmin?tournamentId=6097f7d53bb45c4648fcaccf
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk3ZjU4YzNiYjQ1YzQ2NDhmY2FjY2QiLCJpYXQiOjE2MjA1ODAxMzYsImV4cCI6MTYyMDYyMzMzNn0.aaXxSQcfSkaFcZm03aq72fp6bk2D8j08fpS-8a3W3wM
+
+### Peticion del admin de un equipo para que se una otro usuario
+POST http://localhost:3700/petition/adminToUserForTeam?teamId=6097f7103bb45c4648fcacce
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk3ZjU4YzNiYjQ1YzQ2NDhmY2FjY2QiLCJpYXQiOjE2MjA1ODEyNDYsImV4cCI6MTYyMDYyNDQ0Nn0.VsPnK4JHMdqyIJSPTHnF_NST_bL3ZhtRyRgV6azjP8w
+
+{
+    "username": "OwO"
+}
+
+### Peticion del admin de un torneo para que se una otro equipo
+POST http://localhost:3700/petition/adminToUserForTournament?tournamentId=6097f7d53bb45c4648fcaccf
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1ODEzNDQsImV4cCI6MTYyMDYyNDU0NH0.UnP-Pi9NYHB9W9NY-PDi98kFpuNjW_uyQXCha-fnc30
+
+{
+    "name": "Squalidos"
+}
+
+### Cerrar peticion
+DELETE http://localhost:3700/petition/closePetition/609814d7346c86399c429093
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1ODEzNDQsImV4cCI6MTYyMDYyNDU0NH0.UnP-Pi9NYHB9W9NY-PDi98kFpuNjW_uyQXCha-fnc30

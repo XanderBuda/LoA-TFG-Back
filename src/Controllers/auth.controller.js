@@ -4,12 +4,12 @@ const { generarJWT } = require('../Helpers/jwt');
 
 const login = async (req, res) => {
 
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     try {
 
-        const userDB = await User.findOne({ email });
-        if (!userDB) return res.status(404).send({ message: `El email no existe` });
+        const userDB = await User.findOne({ username });
+        if (!userDB) return res.status(404).send({ message: `El usuario no existe` });
 
         //verificar contraseña
         const validPassword = bcrypt.compareSync(password, userDB.password);

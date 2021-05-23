@@ -38,8 +38,18 @@ validations.putTournamentTeamChecks = [
 ]
 
 validations.postLogin = [
-    check('email', 'Email is required').trim().isEmail(),
+    check('username', 'Username is required').trim().not().isEmpty(),
     check('password', 'Password is required').trim().not().isEmpty(),
+    validator
+]
+
+validations.postPetitionAdminToUserForTeam = [
+    check('username', 'Username is required').trim().not().isEmpty(),
+    validator
+]
+
+validations.postPetitionAdminToUserForTournament = [
+    check('name', 'Name of team is required').trim().not().isEmpty(),
     validator
 ]
 
