@@ -7,7 +7,7 @@
 
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NzA1NjMsImV4cCI6MTYyMDYxMzc2M30.M3h9RbY2CzctxJNgwwDD-x6V8hLSvIzp6YNEVefTAeE
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjE3NjM0MDcsImV4cCI6MTYyMTgwNjYwN30.WrhsOlD8JcyBLEEkmSB3YgB17Hl1dRXdG1hrDrvoPcM
 ### CREATE A NEW USER
 POST http://localhost:3700/user/new
 Content-Type: application/json
@@ -210,3 +210,17 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zj
 DELETE http://localhost:3700/petition/closePetition/609814d7346c86399c429093
 Content-Type: application/json
 x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1ODEzNDQsImV4cCI6MTYyMDYyNDU0NH0.UnP-Pi9NYHB9W9NY-PDi98kFpuNjW_uyQXCha-fnc30
+
+########################################################################
+### UPLOADS ############################################################
+########################################################################
+
+### UPDLOAD FILE
+PUT http://localhost:3700/upload/usuario/123
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjE3NjM0MDcsImV4cCI6MTYyMTgwNjYwN30.WrhsOlD8JcyBLEEkmSB3YgB17Hl1dRXdG1hrDrvoPcM
+
+### GET FILE
+http://localhost:3700/upload/User/3f4fe7cc-a45c-4553-9c26-f51ed4c47fba.png
+Content-Type: application/json
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjE3NjM0MDcsImV4cCI6MTYyMTgwNjYwN30.WrhsOlD8JcyBLEEkmSB3YgB17Hl1dRXdG1hrDrvoPcM

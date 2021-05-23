@@ -9,6 +9,7 @@ var teamRoutes = require('./Routes/team.routes');
 var tournamentRoutes = require('./Routes/tournament.routes');
 var auth = require('./Routes/auth.routes');
 var petitionRoutes = require('./Routes/petition.routes');
+var uploadsRoutes = require('./Routes/uploads.routes')
 
 //MIDDLEWARES
 app.use(express.urlencoded({ extended: false }));
@@ -24,5 +25,7 @@ app.use('/team', teamRoutes);
 app.use('/tournament', tournamentRoutes);
 app.use('/login', auth);
 app.use('/petition',petitionRoutes);
+app.use('/upload',uploadsRoutes);
+
 
 module.exports = app;

@@ -87,7 +87,6 @@ userController.getTeam = async (req, res) => {
 
 userController.getAllPetitionsForTheUser = async (req, res) => {
 
-
     try {
 
         const _id = req.id;

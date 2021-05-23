@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     statistics: {
         victories: { type: Number, default: 0 },
         defeats: { type: Number, default: 0 },
-        rankigpoints: { type: Number, default: 0 }
+        rankingpoints: { type: Number, default: 0 }
     },
     elo: { type: String, default: null },
     roles: {
