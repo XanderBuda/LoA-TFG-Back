@@ -5,4 +5,6 @@ const config = {
     db: process.env.MONGODB || 'mongodb://localhost:27017/LoA'
 };
 
+// "https://loa-backend.herokuapp.com"
+
 module.exports = config;
