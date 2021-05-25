@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,8 @@
     "mongoose-autopopulate": "^0.13.0",
     "morgan": "^1.10.0",
     "serve-index": "^1.9.1",
+    "swagger-jsdoc": "6.0.0",
+    "swagger-ui-express": "^4.1.6",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

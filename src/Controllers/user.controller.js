@@ -6,6 +6,7 @@ const { generarJWT } = require('../Helpers/jwt');
 
 const userController = {};
 
+
 userController.getUsers = async (req, res) => {
     try {
         const users = await User.find();
