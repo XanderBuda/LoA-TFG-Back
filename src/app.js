@@ -1,5 +1,7 @@
 const express = require('express');
 const morgan = require("morgan");
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUiExpress = require('swagger-ui-express');
 const cors = require("cors");
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
@@ -58,8 +60,9 @@ app.use('/user', userRoutes);
 app.use('/team', teamRoutes);
 app.use('/tournament', tournamentRoutes);
 app.use('/login', auth);
-app.use('/petition',petitionRoutes);
-app.use('/upload',uploadsRoutes);
+app.use('/petition', petitionRoutes);
+app.use('/upload', uploadsRoutes);
+app.use('/api-docs', swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerDocs));
 
 
 module.exports = app;
