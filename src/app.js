@@ -10,19 +10,17 @@ const swaggerOptions = {
         openapi: '3.0.0',
         info: {
             title: 'LoA API',
-            description: "API para desarrollar una aplicacion de organizacion de torneos para el League of Legends",
-            contact: {
-                name: 'Alexandru Aurel Buda && Javier Dolz'
-            }
+            version: '1.0.0',
+            description: "API para desarrollar una aplicacion de organizacion de torneos para el League of Legends"
         },
         servers: [
             {
-                "url": "http://localhost:3700",
-                "description": "Local API"
-            },
-            {
                 "url": "loa-backend.herokuapp.com",
                 "description": "API Desplegada"
+            },
+            {
+                "url": "http://localhost:3700",
+                "description": "Local API"
             }
         ]
     },
