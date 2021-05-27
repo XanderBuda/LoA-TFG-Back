@@ -92,7 +92,13 @@ const userController = require('../Controllers/user.controller');
  *         roles:
  *           first: Toplane
  *           second: Adc
- *          
+ *     
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT 
+ *        
  */
 
 /**
@@ -106,6 +112,8 @@ const userController = require('../Controllers/user.controller');
  * @swagger
  * /user/all:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Devuelve todos los usuarios
  *     tags: [User] 
  *     responses:
@@ -116,10 +124,13 @@ const userController = require('../Controllers/user.controller');
  *             schema:
  *               type: array
  *               items:
- *                  $ref: '#/components/schemas/User'        
+ *                  $ref: '#/components/schemas/User'
+ *       404:
+ *         description: No hay usuarios
+ *       500:
+ *         description: ERROR al realizar la peticion  
  */
 router.get('/all', validarJWT, userController.getUsers);
-
 router.get('/getTeam', userController.getTeam);
 router.get('/getAllPetitionsForTheUser', validarJWT, userController.getAllPetitionsForTheUser);
 router.get('/:id?', userController.getUserById);

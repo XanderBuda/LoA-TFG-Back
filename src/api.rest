@@ -7,15 +7,15 @@
 
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjE3NjM0MDcsImV4cCI6MTYyMTgwNjYwN30.WrhsOlD8JcyBLEEkmSB3YgB17Hl1dRXdG1hrDrvoPcM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxNDYxMzUsImV4cCI6MTYyMjE4OTMzNX0.glGdlz-5eQbs3ZfIIThojlt71IweirWZ7sx2p9QpgtE
 ### CREATE A NEW USER
 POST http://localhost:3700/user/new
 Content-Type: application/json
 
 {
-    "username": "Pepe",
-    "email": "pepe@gmail.com",
-    "password": "pepe"
+    "username": "Pepo",
+    "email": "pepo@gmail.com",
+    "password": "pepo"
 }
 
 ### FIND A USER FOR ID
@@ -165,8 +165,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "username": "UwU",
-    "password": "jeje"
+    "username": "Pepo",
+    "password": "pepo"
 }
 
 ### RENOVAR TOKEN USUARIO

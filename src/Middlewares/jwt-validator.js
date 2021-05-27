@@ -1,16 +1,23 @@
 const jwt = require('jsonwebtoken');
 const validarJWT = (req, res, next) => {
 
-    const token = req.header('x-token');
+    // const token = req.header('x-token');
 
-    if (!token) return res.status(401).send({ message: 'No existe web token' });
+    let token = req.headers['x-access-token'] || req.headers['authorization'];
+
+    if (!token) return res.status(404).send({ message: 'No existe web token' });
+
+    if (token.startsWith('Bearer ')) {
+        // Remove Bearer from string
+        token = token.slice(7, token.length);
+    }
 
     try {
 
         const { _id } = jwt.verify(token, process.env.JWT_SECRETKEY);
 
         req.id = _id;
-        
+
         next();
 
     } catch (error) {
