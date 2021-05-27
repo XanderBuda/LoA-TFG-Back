@@ -130,6 +130,7 @@ const userController = require('../Controllers/user.controller');
  *       500:
  *         description: ERROR al realizar la peticion  
  */
+
 router.get('/all', validarJWT, userController.getUsers);
 router.get('/getTeam', userController.getTeam);
 router.get('/getAllPetitionsForTheUser', validarJWT, userController.getAllPetitionsForTheUser);
