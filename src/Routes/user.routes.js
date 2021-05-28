@@ -28,7 +28,7 @@ const userController = require('../Controllers/user.controller');
  *           unique: true   
  *         picture:
  *           type: string
- *           description: Es nombre (codificado) con que el se guardar en BBDD
+ *           description: Es nombre (codificado) con que el se guarda en BBDD
  *           default: null   
  *         email:
  *           type: string
@@ -128,7 +128,7 @@ const userController = require('../Controllers/user.controller');
  *       404:
  *         description: No hay usuarios
  *       500:
- *         description: ERROR al realizar la peticion  
+ *         description: ERROR al realizar la peticion + /custom_message/  
  */
 
 router.get('/all', validarJWT, userController.getUsers);

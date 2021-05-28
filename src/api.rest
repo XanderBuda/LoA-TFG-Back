@@ -19,7 +19,8 @@ Content-Type: application/json
 }
 
 ### FIND A USER FOR ID
-GET http://localhost:3700/user/60854371ea479c1fb05d3c60
+GET http://localhost:3700/user/60aa848d3ea19e0015456f66
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 ### UPDATE A USER FOR ID
 PUT http://localhost:3700/user/update/60859ad0a9ec93272c6f11d8
@@ -34,8 +35,8 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 }
 
 ### DELETE A USER FOR ID
-DELETE http://localhost:3700/user/delete/6085a53ed802d9523cba9887
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA0OTM2NzYsImV4cCI6MTYyMDUzNjg3Nn0.a2kVN0m8yaKhmJ26EmR7i_UnC79I2KVIj8umcbreUTc
+DELETE http://localhost:3700/user/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTk5NDgsImV4cCI6MTYyMjI0MzE0OH0.C8cQnWAVxN3IFWI6RWEqr5xkgIey4hcOBAripHQ1k4w
 
 
 ### GET TEAM BY USER REQUEST
@@ -111,11 +112,12 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 
 ### ALL TOURNAMENTS REQUEST
 GET http://localhost:3700/tournament/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 ### CREATE A NEW TOURNAMENT
 POST http://localhost:3700/tournament/new
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NzE5ODgsImV4cCI6MTYyMDYxNTE4OH0.6-7v0iG2G3v-pYpjr4DN_3T3Ne0kKm6GkTO7mUbpCyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 {
     "name": "The final noobs",
@@ -138,8 +140,8 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 }
 
 ### DELETE A TOURNAMENTS FOR ID
-DELETE http://localhost:3700/tournament/delete/6085afc6fb473d6f4024ea70
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NjY4NjYsImV4cCI6MTYyMDYxMDA2Nn0.q8IiXvWC6tCRu3vAiLMHsQp8OYXhQHTGixRbQ-HuKVA
+DELETE http://localhost:3700/tournament/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhODQ4ZDNlYTE5ZTAwMTU0NTZmNjYiLCJpYXQiOjE2MjIyMDAyMzAsImV4cCI6MTYyMjI0MzQzMH0.c9JSpB0mSU5BGCg-iMUESeWpVkBnv9IveNItX4HvIi0
 
 ### ASSIGN A TEAM FOR A TOURNAMENT
 PUT http://localhost:3700/tournament/assignTeam/608c0e519b4caf370417cfd5

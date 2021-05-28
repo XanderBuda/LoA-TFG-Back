@@ -65,19 +65,15 @@ const teamController = require('../Controllers/team.controller');
  *               default: 0     
  *          
  *       example:
- *         id: 60aa843a3ea19e0015456f65
- *         username: pepe2
- *         picture: 0d28fbce-ec0d-43d2-a197-b74328729d1a.png
- *         email: pepe2@gmail.com
- *         password: $2a$10$v.nd2t0XluIYjpVBrdVuzu1cCHFJmc52FF0t4Abf85KfGiof1vjnq
+ *         id: 60aa920f3ea19e0015456f67
+ *         name: Crazy Romanians
+ *         admin: 60aa843a3ea19e0015456f62
+ *         users: [60aa843a3ea19e0015456f62, 60aa920f3ea19e0015456f6e]
+ *         image: 0d28fbce-ec0d-43d2-a197-b74328729d1a.png
  *         statistics:
- *           victories: 15
- *           defeats: 8
- *           rankingpoints: 260      
- *         elo: Silver 2
- *         roles:
- *           first: Toplane
- *           second: Adc
+ *           victories: 13
+ *           defeats: 4
+ *           rankingpoints: 230      
  *     
  *   securitySchemes:
  *     bearerAuth:
@@ -86,8 +82,99 @@ const teamController = require('../Controllers/team.controller');
  *       bearerFormat: JWT 
  *        
  */
+
+/**
+  * @swagger
+  * tags:
+  *   name: Team
+  *   description: Peticiones sobre el equipo
+  */
+
+/**
+ * @swagger
+ * /team/all:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Devuelve todos los equipos
+ *     tags: [Team] 
+ *     responses:
+ *       200:
+ *         description: La lista de equipos
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                  $ref: '#/components/schemas/Team'
+ *       404:
+ *         description: No hay equipos
+ *       500:
+ *         description: ERROR al realizar la peticion + /custom_message/
+ */
+
 router.get('/all', validarJWT, teamController.getTeams);
+
+/**
+ * @swagger
+ * /team/getTournament?name:
+ *   get:
+ *     parameters:
+ *       - name: name
+ *         in: query
+ *         schema:
+ *           type: string
+ *         description: El nombre del torneo donde buscar al equipo
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Devuelve el torneo donde participa el equipo
+ *     tags: [Team] 
+ *     responses:
+ *       200:
+ *         description: Torneo donde participa el equipo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                  $ref: '#/components/schemas/Tournament'
+ *       404:
+ *         description: Este equipo no participa en ningún torneo
+ *       500:
+ *         description: ERROR al realizar la peticion + /custom_message/
+ */
+
 router.get('/getTournament', validarJWT, teamController.getTournament);
+
+/**
+ * @swagger
+ * /team/{id}:
+ *   get:
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         schema:
+ *           type: string
+ *         description: El id del equipo a buscar
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Devuelve el equipo con dicho id
+ *     tags: [Team] 
+ *     responses:
+ *       200:
+ *         description: Equipo con id coincidente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                  $ref: '#/components/schemas/Team'
+ *       404:
+ *         description: El equipo no existe
+ *       500:
+ *         description: ERROR al realizar la peticion + /custom_message/
+ */
+
 router.get('/:id?', validarJWT, teamController.getTeam);
 router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
 router.post('/new', validarJWT, validations.postTeamChecks, teamController.createTeam);
