@@ -39,7 +39,7 @@ tournamentController.saveTournament = async (req, res) => {
 tournamentController.updateTournament = async (req, res) => {
     try {
         if (req.body.size) {
-            if (req.body.size != 4 && req.body.size != 8 && req.body.size != 16) return res.status(401).send({ message: 'Tamaño de torneo no permitido' });
+            if (req.body.size != 4 && req.body.size != 8 && req.body.size != 16) return res.status(402).send({ message: 'Tamaño de torneo no permitido' });
         }
 
         const tournamentUpdated = await Tournament.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
@@ -107,12 +107,12 @@ tournamentController.assignTeam = async (req, res) => {
     try {
         //EL TORNEO ESTÁ LLENO
         const tournament = await Tournament.findById(req.params.id);
-        if (tournament.teams.length >= tournament.size) return res.status(401).send({ message: `El torneo está lleno` });
+        if (tournament.teams.length >= tournament.size) return res.status(402).send({ message: `El torneo está lleno` });
         let encontrado = false;
         tournament.teams.forEach(element => {
             if (element == req.body.team) { encontrado = true }
         });
-        if (encontrado) return res.status(402).json({ message: 'El equipo ya está en el torneo' });
+        if (encontrado) return res.status(403).json({ message: 'El equipo ya está en el torneo' });
         //####################
 
         const { team } = req.body;
@@ -155,7 +155,7 @@ tournamentController.getNumberOfTeams = async (req, res) => {
     try {
         const tournament = await Tournament.findById(req.params.id);
         if (!tournament) return res.status(404).json({ message: 'El torneo no existe' });
-        if (tournament.teams.length == 0) return res.status(401).send({ message: `El torneo no tiene equipos` });
+        if (tournament.teams.length == 0) return res.status(402).send({ message: `El torneo no tiene equipos` });
         res.status(200).json(tournament.teams.length);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la peticion: ${error}` });

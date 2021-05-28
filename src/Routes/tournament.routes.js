@@ -93,6 +93,10 @@ const tournamentController = require('../Controllers/tournament.controller');
  *               type: array
  *               items:
  *                  $ref: '#/components/schemas/Tournament'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: No hay torneos
  *       500:
@@ -123,6 +127,10 @@ router.get('/all', validarJWT, tournamentController.getTournaments);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Tournament'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: El torneo no existe
  *       500:
@@ -154,7 +162,11 @@ router.get('/:id?', validarJWT, tournamentController.getTournament);
  *             schema:
  *               type: number
  *               example: 8
+ *       400:
+ *         description: No existe web token
  *       401:
+ *         description: Token no válido
+ *       402:
  *         description: El torneo no tiene equipos
  *       404:
  *         description: El torneo no existe
@@ -189,6 +201,10 @@ router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTea
  *     responses:
  *       200:
  *         description: Torneo guardado correctamente
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       500:
  *         description: Error al realizar la peticion + /custom_message/
  */
@@ -224,7 +240,11 @@ router.post('/new', validarJWT, validations.postTournamentChecks, tournamentCont
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Tournament'
+ *       400:
+ *         description: No existe web token
  *       401:
+ *         description: Token no válido
+ *       402:
  *         description: Tamaño de torneo no permitido
  *       404:
  *         description: El torneo no existe
@@ -270,9 +290,13 @@ router.put('/update/:id', validarJWT, tournamentController.updateTournament);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Tournament'
+ *       400:
+ *         description: No existe web token
  *       401:
- *         description: El torneo está lleno
+ *         description: Token no válido
  *       402:
+ *         description: El torneo está lleno
+ *       403:
  *         description: El equipo ya está en el torneo
  *       404:
  *         description: El torneo no existe
@@ -318,6 +342,10 @@ router.put('/assignTeam/:id', validarJWT, validations.putTournamentTeamChecks, t
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Tournament'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       403:
  *         description: El equipo no existe
  *       404:
@@ -340,6 +368,10 @@ router.put('/removeTeam/:id', validarJWT, validations.putTournamentTeamChecks, t
  *     responses:
  *       200:
  *         description: Torneo eliminado correctamente
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: El torneo no se puede eliminar
  *       500:

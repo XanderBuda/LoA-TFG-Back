@@ -210,6 +210,10 @@ router.get('/:id?', validarJWT, teamController.getTeam);
  *             schema:
  *               type: number
  *               example: 3
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       402:
  *         description: El equipo no tiene usuarios
  *       404:
