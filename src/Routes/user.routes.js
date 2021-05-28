@@ -132,12 +132,12 @@ const userController = require('../Controllers/user.controller');
  */
 
 router.get('/all', validarJWT, userController.getUsers);
-router.get('/getTeam', userController.getTeam);
+router.get('/getTeam', validarJWT, userController.getTeam);
 router.get('/getAllPetitionsForTheUser', validarJWT, userController.getAllPetitionsForTheUser);
-router.get('/:id?', userController.getUserById);
+router.get('/:id?', validarJWT, userController.getUserById);
 router.post('/new', validations.postUserChecks, userController.newUser);
 router.put('/update/:id', validarJWT, userController.updateUser);
-router.delete('/delete/:id', validarJWT, userController.deleteUser);
+router.delete('/delete', validarJWT, userController.deleteUser);
 
 
 module.exports = router;

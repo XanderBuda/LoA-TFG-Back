@@ -34,6 +34,16 @@ const teamController = require('../Controllers/team.controller');
  *               type: string
  *               description: Autogenerado al guardar en BBDD
  *               unique: true
+ *         users:
+ *           type: array
+ *           description: Integrantes del equipo
+ *           items:
+ *             type: object
+ *             properties:
+ *               id:
+ *                 type: string
+ *                 description: Autogenerado al guardar en BBDD
+ *                 unique: true
  *         image:
  *           type: string
  *           description: Es nombre (codificado) con que el se guarda la imagen del equipo en BBDD
@@ -42,15 +52,15 @@ const teamController = require('../Controllers/team.controller');
  *             
  *           properties:
  *             victories:
- *               description: Las victorias que tiene el usuario 
+ *               description: Las victorias que tiene el equipo 
  *               type: Number
  *               default: 0
  *             defeats:
- *               description: Las derrotas que tiene el usuario 
+ *               description: Las derrotas que tiene el equipo 
  *               type: Number
  *               default: 0  
  *             rankingpoints:
- *               description: Los puntos que tiene el usuario en la clasificacion de la app
+ *               description: Los puntos que tiene el equipo en la clasificacion de la app
  *               type: Number
  *               default: 0     
  *          
@@ -76,16 +86,16 @@ const teamController = require('../Controllers/team.controller');
  *       bearerFormat: JWT 
  *        
  */
-router.get('/all', teamController.getTeams);
-router.get('/getTournament', teamController.getTournament);
-router.get('/:id?', teamController.getTeam);
-router.get('/numberOfUsers/:id', teamController.getNumberOfUsers);
+router.get('/all', validarJWT, teamController.getTeams);
+router.get('/getTournament', validarJWT, teamController.getTournament);
+router.get('/:id?', validarJWT, teamController.getTeam);
+router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
 router.post('/new', validarJWT, validations.postTeamChecks, teamController.createTeam);
 router.put('/update/:id', validarJWT, teamController.editTeam);
-router.put('/assignUser/:id', validations.putTeamUserChecks, teamController.assignUser);
+router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamController.assignUser);
 router.put('/removeUser/:id', validarJWT, validations.putTeamUserChecks, teamController.removeUser);
 // router.put('/assignAdmin/:id', teamController.assignAdmin);
-router.delete('/delete/:id', validarJWT, teamController.deleteTeam);
+router.delete('/delete', validarJWT, teamController.deleteTeam);
 
 module.exports = router;
 

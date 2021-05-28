@@ -64,8 +64,9 @@ userController.updateUser = async (req, res) => {
 }
 
 userController.deleteUser = async (req, res) => {
+    const _id = req.id;
     try {
-        const userDelete = await User.findByIdAndDelete(req.params.id);
+        const userDelete = await User.findByIdAndDelete(_id);
         if (!userDelete) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ message: "Usuario borrado" });
     } catch (error) {

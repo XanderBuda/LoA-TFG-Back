@@ -47,8 +47,14 @@ teamController.editTeam = async (req, res) => {
 }
 
 teamController.deleteTeam = async (req, res) => {
+
+    const _id = req.id; //usuario de la sesion
+
     try {
-        const deletedTeam = await Team.findByIdAndDelete(req.params.id);
+        const team = await Team.find();
+        const teamDeleted = team.filter((team) => team.admin == _id);
+
+        const deletedTeam = await Team.findByIdAndDelete(teamDeleted[0].id);
         if (!deletedTeam) return res.status(404).json({ message: 'El equipo no se puede eliminar' });
         res.status(200).json({ message: 'Equipo eliminado correctamente' });
     } catch (error) {
@@ -140,7 +146,7 @@ teamController.getNumberOfUsers = async (req, res) => {
 teamController.getTournament = async (req, res) => {
     const { name } = req.query; //nombre del equipo a buscar en un torneo, sdfgvsdfg/?teamname=pedro
     //                                                                                   adfgsdfgd/:id
-                                                                          
+
     try {
         const tournament = await Tournament.find({ teams: { $not: { $size: 0 } } }).populate({ path: 'teams', match: { name: name } });
 

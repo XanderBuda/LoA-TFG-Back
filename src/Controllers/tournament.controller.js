@@ -48,9 +48,14 @@ tournamentController.updateTournament = async (req, res) => {
 
 tournamentController.deleteTournament = async (req, res) => {
 
+    const _id = req.id; //usuario de la sesion
+
     try {
-        const tournamentDeleted = await Tournament.findByIdAndDelete(req.params.id);
-        if (!tournamentDeleted) return res.status(404).send({ message: 'El torneo no existe' });
+        const tournament = await Tournament.find();
+        const tournamentDeleted = tournament.filter((tournament) => tournament.admin == _id);
+        const deletedTournament = await Tournament.findByIdAndDelete(tournamentDeleted[0].id);
+        
+        if (!deletedTournament) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json({ message: "Torneo borrado" });
     } catch (error) {
         res.status(500).json({ message: `ERROR al borrar el torneo: ${error}` });

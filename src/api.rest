@@ -51,6 +51,7 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zj
 
 ### ALL TEAMS REQUEST
 GET http://localhost:3700/team/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 ### GET TOURNAMENT BY TEAM REQUEST
 GET http://localhost:3700/team/getTournament?name=TEAM+REVE
@@ -58,10 +59,10 @@ GET http://localhost:3700/team/getTournament?name=TEAM+REVE
 ### CREATE A NEW TEAM
 POST http://localhost:3700/team/new
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk3ZjU4YzNiYjQ1YzQ2NDhmY2FjY2QiLCJpYXQiOjE2MjA1NzE1MzIsImV4cCI6MTYyMDYxNDczMn0.D52VNKRNPyMG6cXOfhDc7KO5jy-SZZ_2m7qo5fDPBbQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 {
-    "name": "Squalidos"
+    "name": "EEP Esports"
 }
 
 ### FIND A TEAM FOR ID
@@ -85,8 +86,8 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zj
 }
 
 ### DELETE A TEAM FOR ID
-DELETE http://localhost:3700/team/delete/608bfc3da57d3f26d480560f
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjA1NjY3MTUsImV4cCI6MTYyMDYwOTkxNX0.15nJQiCX5m-Pvykf54swFJUKlJ_BIKIVnGoOE1UZbvs
+DELETE http://localhost:3700/team/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhODQ4ZDNlYTE5ZTAwMTU0NTZmNjYiLCJpYXQiOjE2MjIxOTg2NDMsImV4cCI6MTYyMjI0MTg0M30.c-JYYm5Gst6UAxjT_0e_JGhqDT-9uKqzovm5BIKqTjQ
 ### ASSIGN A USER FOR A TEAM
 PUT http://localhost:3700/team/assignUser/609036c170d03d16b89da151
 Content-Type: application/json
@@ -165,8 +166,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "username": "Pepo",
-    "password": "pepo"
+    "username": "JDOLZ",
+    "password": "owo"
 }
 
 ### RENOVAR TOKEN USUARIO
