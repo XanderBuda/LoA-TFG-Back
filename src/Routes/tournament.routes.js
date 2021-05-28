@@ -76,14 +76,275 @@ const tournamentController = require('../Controllers/tournament.controller');
   *   description: Peticiones sobre el torneo
   */
 
+/**
+ * @swagger
+ * /tournament/all:
+ *   get:
+ *     summary: Devuelve todos los torneos
+ *     security:
+ *       - bearerAuth: []
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: La lista de torneos
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                  $ref: '#/components/schemas/Tournament'
+ *       404:
+ *         description: No hay torneos
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.get('/all', validarJWT, tournamentController.getTournaments);
+
+/**
+ * @swagger
+ * /tournament/{id}:
+ *   get:
+ *     summary: Devuelve el torneo con dicho id
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El id del torneo a buscar
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Torneo con id coincidente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Tournament'
+ *       404:
+ *         description: El torneo no existe
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.get('/:id?', validarJWT, tournamentController.getTournament);
+
+/**
+ * @swagger
+ * /tournament/numberOfTeams/{id}:
+ *   get:
+ *     summary: Devuelve el número de equipos del torneo con dicho id
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El id del torneo a buscar
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Número de equipos en el torneo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: number
+ *               example: 8
+ *       401:
+ *         description: El torneo no tiene equipos
+ *       404:
+ *         description: El torneo no existe
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTeams);
+
+/**
+ * @swagger
+ * /tournament/new:
+ *   post:
+ *     summary: Crea un nuevo torneo
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       description: Nombre del torneo a crear
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: 
+ *                 type: string
+ *             required:
+ *               - name
+ *             example:
+ *               name: "Champions Legends"
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Torneo guardado correctamente
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.post('/new', validarJWT, validations.postTournamentChecks, tournamentController.saveTournament);
+
+/**
+ * @swagger
+ * /tournament/update/{id}:
+ *   put:
+ *     summary: Actualiza datos del torneo con dicho id
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El id del torneo a actualizar
+ *     requestBody:
+ *       description: Datos a actualizar
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Tournament'
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Torneo actualizado
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Tournament'
+ *       401:
+ *         description: Tamaño de torneo no permitido
+ *       404:
+ *         description: El torneo no existe
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.put('/update/:id', validarJWT, tournamentController.updateTournament);
+
+/**
+ * @swagger
+ * /tournament/assignTeam/{id}:
+ *   put:
+ *     summary: Añade un equipo a un torneo
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El id del torneo
+ *     requestBody:
+ *       description: Id del equipo a añadir al torneo
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               team: 
+ *                 type: string
+ *             required:
+ *               - team
+ *             example:
+ *               team: 60aa843a3ea19e0015456f62
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Equipo con nuevo usuario añadido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Tournament'
+ *       401:
+ *         description: El torneo está lleno
+ *       402:
+ *         description: El equipo ya está en el torneo
+ *       404:
+ *         description: El torneo no existe
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.put('/assignTeam/:id', validarJWT, validations.putTournamentTeamChecks, tournamentController.assignTeam);
+
+/**
+ * @swagger
+ * /tournament/removeTeam/{id}:
+ *   put:
+ *     summary: Elimina un equipo de un torneo
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El id del torneo
+ *     requestBody:
+ *       description: Id del equipo a eliminar del torneo
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               team: 
+ *                 type: string
+ *             required:
+ *               - team
+ *             example:
+ *               team: 60aa843a3ea19e0015456f62
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Equipo sin el equipo eliminado
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Tournament'
+ *       403:
+ *         description: El equipo no existe
+ *       404:
+ *         description: El equipo no se puede eliminar del torneo
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
+
 router.put('/removeTeam/:id', validarJWT, validations.putTournamentTeamChecks, tournamentController.removeTeam);
 // router.put('/assignAdmin/:id', tournamentController.assignAdmin);
+
+/**
+ * @swagger
+ * /tournament/delete:
+ *   delete:
+ *     summary: Elimina el torneo que administre el usuario del token activo
+ *     security:
+ *       - bearerAuth: []
+ *     tags: [Tournament] 
+ *     responses:
+ *       200:
+ *         description: Torneo eliminado correctamente
+ *       404:
+ *         description: El torneo no se puede eliminar
+ *       500:
+ *         description: Error al realizar la peticion + /custom_message/
+ */
 router.delete('/delete', validarJWT, tournamentController.deleteTournament);
 
 module.exports = router;

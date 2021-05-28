@@ -227,6 +227,8 @@ router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
  *                 type: string
  *             required:
  *               - name
+ *             example:
+ *               name: "Los más noobs"
  *     tags: [Team] 
  *     responses:
  *       200:
@@ -300,6 +302,8 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *                 type: string
  *             required:
  *               - user
+ *             example:
+ *               user: 60aa843a3ea19e0015456f62
  *     tags: [Team] 
  *     responses:
  *       200:
@@ -311,7 +315,7 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *       401:
  *         description: El equipo está lleno
  *       402:
- *         descripcion: El usuario ya está en el equipo
+ *         description: El usuario ya está en el equipo
  *       404:
  *         description: El equipo no existe
  *       500:
@@ -346,6 +350,8 @@ router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *                 type: string
  *             required:
  *               - user
+ *             example:
+ *               user: 60aa843a3ea19e0015456f62
  *     tags: [Team] 
  *     responses:
  *       200:
@@ -357,7 +363,7 @@ router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *       401:
  *         description: El administrador no se puede eliminar del equipo
  *       403:
- *         descripcion: El equipo no existe
+ *         description: El equipo no existe
  *       404:
  *         description: El usuario no se puede eliminar del equipo
  *       500:

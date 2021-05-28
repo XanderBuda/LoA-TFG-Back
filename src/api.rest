@@ -121,7 +121,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 {
-    "name": "The final noobs",
+    "name": "The pentakill party",
     "size": 4
 }
 
@@ -132,12 +132,12 @@ GET http://localhost:3700/tournament/608c0e519b4caf370417cfd5
 GET http://localhost:3700/tournament/numberOfTeams/608c0e519b4caf370417cfd5
 
 ### UPDATE A TOURNAMENTS FOR ID
-PUT http://localhost:3700/tournament/update/608c0e519b4caf370417cfd5
+PUT http://localhost:3700/tournament/update/60b0d7674886324978bc6d82
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
 {
-    "size": 8
+    "size": 4
 }
 
 ### DELETE A TOURNAMENTS FOR ID
