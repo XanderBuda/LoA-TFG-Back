@@ -34,7 +34,7 @@ petitionController.createPetitionForUsers = async (req, res) => {
         res.status(200).json({ message: 'Peticion creada correctamente' })
 
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` })
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` })
     }
 };
 
@@ -59,7 +59,7 @@ petitionController.createPetitionForAdminsTournament = async (req, res) => {
         }
         res.status(200).json({ message: 'Peticion creada correctamente' })
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` })
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` })
     }
 };
 
@@ -83,7 +83,7 @@ petitionController.createPetitionForAdminsTeam = async (req, res) => {
         }
         res.status(200).json({ message: 'Peticion creada correctamente' })
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` })
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` })
     }
 };
 
@@ -94,7 +94,7 @@ petitionController.closePetition = async (req, res) => {
         if (!petitionDelete) return res.status(404).send({ message: 'La peticion no existe' });
         res.status(200).json({ message: "Peticion borrada" });
     } catch (error) {
-        res.status(500).json({ message: `ERROR al borrar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al borrar la peticion: ${error}` });
     }
 };
 

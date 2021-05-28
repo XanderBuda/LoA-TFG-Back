@@ -13,7 +13,7 @@ userController.getUsers = async (req, res) => {
         if (users.length == 0) return res.status(404).send({ message: `No hay usuarios` });
         res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
     }
 }
 
@@ -23,7 +23,7 @@ userController.getUserById = async (req, res) => {
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
         res.status(200).json(user);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
     }
 }
 
@@ -48,7 +48,7 @@ userController.newUser = async (req, res) => {
 
         res.status(200).json({ user: user, Authorization: token });
     } catch (error) {
-        res.status(500).json({ message: `ERROR al guardar el usuario: ${error}` });
+        res.status(500).json({ message: `Error al guardar el usuario: ${error}` });
     }
 
 }
@@ -59,7 +59,7 @@ userController.updateUser = async (req, res) => {
         if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ user: userUpdate });
     } catch (error) {
-        res.status(500).json({ message: `ERROR al actualiar el usuario: ${error}` });
+        res.status(500).json({ message: `Error al actualiar el usuario: ${error}` });
     }
 }
 
@@ -70,7 +70,7 @@ userController.deleteUser = async (req, res) => {
         if (!userDelete) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ message: "Usuario borrado" });
     } catch (error) {
-        res.status(500).json({ message: `ERROR al borrar el usuarios: ${error}` });
+        res.status(500).json({ message: `Error al borrar el usuarios: ${error}` });
     }
 }
 
@@ -84,7 +84,7 @@ userController.getTeam = async (req, res) => {
         if (userTeam.length === 0) return res.status(404).json({ message: `Este usuario no tiene equipo` });
         res.status(200).json(userTeam);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
     }
 }
 
@@ -104,7 +104,7 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         res.status(200).json(userPetitions);
 
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
     };
 }
 

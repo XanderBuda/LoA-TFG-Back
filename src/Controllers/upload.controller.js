@@ -74,7 +74,7 @@ uploadController.fileUpload = (req, res = response) => {
 
 
     } catch (error) {
-        res.status(500).json({ message: `ERROR al subir archivo: ${error}` });
+        res.status(500).json({ message: `Error al subir archivo: ${error}` });
     }
 };
 
@@ -98,7 +98,7 @@ uploadController.getFile = async (req, res = response) => {
 
 
     } catch (error) {
-        res.status(500).json({ message: `ERROR al cargar archivo: ${error}` });
+        res.status(500).json({ message: `Error al cargar archivo: ${error}` });
     }
 };
 

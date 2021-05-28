@@ -9,7 +9,7 @@ tournamentController.getTournament = async (req, res) => {
         if (!tournament) return res.status(404).send({ message: `El torneo no existe` });
         res.status(200).json(tournament);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
     }
 }
 
@@ -32,7 +32,7 @@ tournamentController.saveTournament = async (req, res) => {
         if (!tournament) return res.status(404).send({ message: 'No se ha podido guardar el torneo' });
         res.status(200).json(tournament);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al guardar el torneo: ${error}` });
+        res.status(500).json({ message: `Error al guardar el torneo: ${error}` });
     }
 }
 
@@ -42,7 +42,7 @@ tournamentController.updateTournament = async (req, res) => {
         if (!tournamentUpdated) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json({ tournament: tournamentUpdated });
     } catch (error) {
-        res.status(500).json({ message: `ERROR al actualiar el torneo: ${error}` });
+        res.status(500).json({ message: `Error al actualiar el torneo: ${error}` });
     }
 }
 
@@ -58,7 +58,7 @@ tournamentController.deleteTournament = async (req, res) => {
         if (!deletedTournament) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json({ message: "Torneo borrado" });
     } catch (error) {
-        res.status(500).json({ message: `ERROR al borrar el torneo: ${error}` });
+        res.status(500).json({ message: `Error al borrar el torneo: ${error}` });
     }
 }
 
@@ -117,7 +117,7 @@ tournamentController.assignTeam = async (req, res) => {
         if (!editedTournament) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json(editedTournament);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
     }
 }
 
@@ -129,7 +129,7 @@ tournamentController.removeTeam = async (req, res) => {
         if (!editedTournament) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json(editedTournament);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
     }
 }
 
@@ -140,7 +140,7 @@ tournamentController.assignAdmin = async (req, res) => {
         if (!editedTournament) return res.status(404).json({ message: 'El torneo no existe' });
         return res.status(200).json(editedTournament);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
     }
 }
 
@@ -150,7 +150,7 @@ tournamentController.getNumberOfTeams = async (req, res) => {
         if (tournament.teams.length == 0) return res.status(404).send({ message: `El torneo no tiene equipos` });
         res.status(200).json(tournament.teams.length);
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
     }
 }
 

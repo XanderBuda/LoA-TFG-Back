@@ -21,7 +21,7 @@ const login = async (req, res) => {
         res.status(200).json({ message: 'Login correcto', Authorization: token });
 
     } catch (error) {
-        res.status(500).json({ message: `ERROR al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
     }
 }
 
