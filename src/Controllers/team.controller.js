@@ -94,12 +94,12 @@ teamController.assignUser = async (req, res) => {
     try {
         //EL EQUIPO ESTÁ LLENO
         const team = await Team.findById(req.params.id);
-        if (team.users.length >= 5) return res.status(401).json({ message: 'El equipo está lleno' });
+        if (team.users.length >= 5) return res.status(402).json({ message: 'El equipo está lleno' });
         let encontrado = false;
         team.users.forEach(element => {
             if (element == req.body.user) { encontrado = true }
         });
-        if (encontrado) return res.status(402).json({ message: 'El usuario ya está en el equipo' });
+        if (encontrado) return res.status(403).json({ message: 'El usuario ya está en el equipo' });
         //####################
 
         const { user } = req.body;
@@ -116,7 +116,7 @@ teamController.removeUser = async (req, res) => {
         const { user } = req.body;
         const teamAdmin = await Team.findById(req.params.id);
         if (!teamAdmin) return res.status(403).json({ message: 'El equipo no existe' });
-        if(teamAdmin.admin == user) return res.status(401).json({ message: 'El administrador no se puede eliminar del equipo' });
+        if(teamAdmin.admin == user) return res.status(402).json({ message: 'El administrador no se puede eliminar del equipo' });
 
         const editedTeam = await Team.findByIdAndUpdate(req.params.id, { $pull: { users: user } }, { new: true });
         if (!editedTeam) return res.status(404).json({ message: 'El usuario no se puede eliminar del equipo' });
@@ -141,7 +141,7 @@ teamController.getNumberOfUsers = async (req, res) => {
     try {
         const team = await Team.findById(req.params.id);
         if (!team) return res.status(404).json({ message: 'El equipo no existe' });
-        if (team.users.length == 0) return res.status(401).json({ message: 'El equipo no tiene usuarios' });
+        if (team.users.length == 0) return res.status(402).json({ message: 'El equipo no tiene usuarios' });
         res.status(200).json(team.users.length);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la peticion ${error}` });

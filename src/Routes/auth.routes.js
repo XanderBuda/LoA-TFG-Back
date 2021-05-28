@@ -60,7 +60,7 @@ router.post('/', validations.postLogin, login);
 
 /**
  * @swagger
- * /login:
+ * /login/renew:
  *   get:
  *     summary: Renovar token del usuario de la sesión
  *     security:
@@ -79,6 +79,10 @@ router.post('/', validations.postLogin, login);
  *                   description: Token renovado
  *               example:
  *                 token_renovado: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pq
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  */ 
 
 router.get('/renew', validarJWT, renewToken);

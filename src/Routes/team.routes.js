@@ -107,6 +107,10 @@ const teamController = require('../Controllers/team.controller');
  *               type: array
  *               items:
  *                  $ref: '#/components/schemas/Team'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: No hay equipos
  *       500:
@@ -137,6 +141,10 @@ router.get('/all', validarJWT, teamController.getTeams);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Tournament'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: Este equipo no participa en ningún torneo
  *       500:
@@ -167,6 +175,10 @@ router.get('/getTournament', validarJWT, teamController.getTournament);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Team'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: El equipo no existe
  *       500:
@@ -198,7 +210,7 @@ router.get('/:id?', validarJWT, teamController.getTeam);
  *             schema:
  *               type: number
  *               example: 3
- *       401:
+ *       402:
  *         description: El equipo no tiene usuarios
  *       404:
  *         description: El equipo no existe
@@ -233,6 +245,10 @@ router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
  *     responses:
  *       200:
  *         description: Equipo guardado correctamente
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       500:
  *         description: Error al realizar la peticion + /custom_message/
  */
@@ -268,6 +284,10 @@ router.post('/new', validarJWT, validations.postTeamChecks, teamController.creat
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Team'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: El equipo no existe
  *       500:
@@ -312,9 +332,13 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Team'
+ *       400:
+ *         description: No existe web token
  *       401:
- *         description: El equipo está lleno
+ *         description: Token no válido
  *       402:
+ *         description: El equipo está lleno
+ *       403:
  *         description: El usuario ya está en el equipo
  *       404:
  *         description: El equipo no existe
@@ -360,7 +384,11 @@ router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Team'
+ *       400:
+ *         description: No existe web token
  *       401:
+ *         description: Token no válido
+ *       402:
  *         description: El administrador no se puede eliminar del equipo
  *       403:
  *         description: El equipo no existe
@@ -384,6 +412,10 @@ router.put('/removeUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *     responses:
  *       200:
  *         description: Equipo eliminado correctamente
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: El equipo no se puede eliminar
  *       500:

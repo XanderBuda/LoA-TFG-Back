@@ -13,7 +13,7 @@ const login = async (req, res) => {
 
         //verificar contraseña
         const validPassword = bcrypt.compareSync(password, userDB.password);
-        if (!validPassword) return res.status(402).send({ message: `Las contraseñas no coinciden` });
+        if (!validPassword) return res.status(402).send({ message: `La contraseña no es correcta` });
 
         let token = await generarJWT(userDB.id);
         token = `Bearer ${token}`;

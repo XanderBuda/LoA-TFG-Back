@@ -5,7 +5,7 @@ const validarJWT = (req, res, next) => {
 
     let token = req.headers['x-access-token'] || req.headers['authorization'];
 
-    if (!token) return res.status(404).send({ message: 'No existe web token' });
+    if (!token) return res.status(400).send({ message: 'No existe web token' });
 
     if (token.startsWith('Bearer ')) {
         // Remove Bearer from string
