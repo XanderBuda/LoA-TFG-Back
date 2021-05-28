@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const { response } = require('express');
 const { v4: uuidv4 } = require('uuid');
-const { updateImage } = require('../Helpers/update-image');
+const { updateImage, getImage } = require('../Helpers/update-image');
 
 const uploadController = {};
 
@@ -11,7 +11,7 @@ uploadController.fileUpload = (req, res = response) => {
 
     try {
         const type = req.params.type;
-        const id = req.params.id;
+        const _id = req.id;
 
         const validTypes = ['Team', 'User', 'Tournament'];
 
@@ -63,7 +63,7 @@ uploadController.fileUpload = (req, res = response) => {
             }
 
             //Actualiar base de datos
-            updateImage(type, id, fileName);
+            updateImage(type, _id, fileName);
 
             res.json({
                 ok: true,
@@ -78,14 +78,14 @@ uploadController.fileUpload = (req, res = response) => {
     }
 };
 
-uploadController.getFile = (req, res = response) => {
+uploadController.getFile = async (req, res = response) => {
 
     try {
         const type = req.params.type;
-        const img = req.params.img;
+        const _id = req.id
 
-        let pathImg = path.join(__dirname, `../Uploads/${type}/${img}`);
-
+        let pathImg = await getImage(type, _id);
+        console.log(fs.existsSync(pathImg), pathImg);
         
         if (fs.existsSync(pathImg)) {
             res.sendFile(pathImg);

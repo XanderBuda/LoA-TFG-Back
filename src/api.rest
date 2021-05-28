@@ -114,6 +114,7 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYj
 GET http://localhost:3700/tournament/all
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 
+
 ### CREATE A NEW TOURNAMENT
 POST http://localhost:3700/tournament/new
 Content-Type: application/json
@@ -168,8 +169,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "username": "JDOLZ",
-    "password": "owo"
+    "username": "AABUDA",
+    "password": "uwu"
 }
 
 ### RENOVAR TOKEN USUARIO
@@ -224,6 +225,6 @@ Content-Type: application/json
 x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjE3NjM0MDcsImV4cCI6MTYyMTgwNjYwN30.WrhsOlD8JcyBLEEkmSB3YgB17Hl1dRXdG1hrDrvoPcM
 
 ### GET FILE
-http://localhost:3700/upload/User/3f4fe7cc-a45c-4553-9c26-f51ed4c47fba.png
+http://localhost:3700/upload/Tournament
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zjg3NjVjNWMiLCJpYXQiOjE2MjE3NjM0MDcsImV4cCI6MTYyMTgwNjYwN30.WrhsOlD8JcyBLEEkmSB3YgB17Hl1dRXdG1hrDrvoPcM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhODQzYTNlYTE5ZTAwMTU0NTZmNjUiLCJpYXQiOjE2MjIyMDI0MzMsImV4cCI6MTYyMjI0NTYzM30.3NTuRyb_K9aMVDr1XTK2KWK2env2w7cqntbZc_2TMXM
