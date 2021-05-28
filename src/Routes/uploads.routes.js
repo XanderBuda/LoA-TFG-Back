@@ -9,8 +9,8 @@ const router = Router();
 
 router.use(expresFileUpload());
 
-router.put('/:type/:id',validarJWT,uploadController.fileUpload);
-router.get('/:type/:img',validarJWT,uploadController.getFile);
+router.put('/:type',validarJWT,uploadController.fileUpload);
+router.get('/:type',validarJWT,uploadController.getFile);
 
 
 module.exports = router;
