@@ -7,7 +7,7 @@
 
 ### ALL USERS REQUEST
 GET http://localhost:3700/user/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxNDYxMzUsImV4cCI6MTYyMjE4OTMzNX0.glGdlz-5eQbs3ZfIIThojlt71IweirWZ7sx2p9QpgtE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pk
 ### CREATE A NEW USER
 POST http://localhost:3700/user/new
 Content-Type: application/json

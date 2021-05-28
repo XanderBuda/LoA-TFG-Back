@@ -24,7 +24,16 @@ const teamController = require('../Controllers/team.controller');
  *           description: Es el nombre del equipo
  *           unique: true   
  *         admin:
- * 
+ *           type: object
+ *           description: Es el administrador del equipo
+ *           unique: true  
+ *           required:
+ *             - id
+ *           properties:
+ *             id:
+ *               type: string
+ *               description: Autogenerado al guardar en BBDD
+ *               unique: true
  *         image:
  *           type: string
  *           description: Es nombre (codificado) con que el se guarda la imagen del equipo en BBDD
