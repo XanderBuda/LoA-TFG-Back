@@ -100,7 +100,7 @@ const tournamentController = require('../Controllers/tournament.controller');
  *       404:
  *         description: No hay torneos
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/all', validarJWT, tournamentController.getTournaments);
@@ -134,7 +134,7 @@ router.get('/all', validarJWT, tournamentController.getTournaments);
  *       404:
  *         description: El torneo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/:id?', validarJWT, tournamentController.getTournament);
@@ -171,7 +171,7 @@ router.get('/:id?', validarJWT, tournamentController.getTournament);
  *       404:
  *         description: El torneo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTeams);
@@ -206,7 +206,7 @@ router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTea
  *       401:
  *         description: Token no válido
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.post('/new', validarJWT, validations.postTournamentChecks, tournamentController.saveTournament);
@@ -249,7 +249,7 @@ router.post('/new', validarJWT, validations.postTournamentChecks, tournamentCont
  *       404:
  *         description: El torneo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.put('/update/:id', validarJWT, tournamentController.updateTournament);
@@ -301,7 +301,7 @@ router.put('/update/:id', validarJWT, tournamentController.updateTournament);
  *       404:
  *         description: El torneo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.put('/assignTeam/:id', validarJWT, validations.putTournamentTeamChecks, tournamentController.assignTeam);
@@ -351,7 +351,7 @@ router.put('/assignTeam/:id', validarJWT, validations.putTournamentTeamChecks, t
  *       404:
  *         description: El equipo no se puede eliminar del torneo
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.put('/removeTeam/:id', validarJWT, validations.putTournamentTeamChecks, tournamentController.removeTeam);
@@ -375,7 +375,7 @@ router.put('/removeTeam/:id', validarJWT, validations.putTournamentTeamChecks, t
  *       404:
  *         description: El torneo no se puede eliminar
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 router.delete('/delete', validarJWT, tournamentController.deleteTournament);
 
