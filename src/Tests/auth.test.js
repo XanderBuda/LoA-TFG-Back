@@ -4,6 +4,8 @@ const User = require('../Models/User');
 const { generarJWT } = require('../Helpers/jwt');
 var token;
 
+
+
 beforeEach(async () => {
     let username = 'Pepo';
     const user = await User.findOne({ username })
@@ -26,7 +28,38 @@ describe('POST /login', () => {
             .expect('Content-Type', /application\/json/)
     })
 
+    test('Body request wrong', async () => {
+
+        await request(api).post('/login')
+            .expect(400)
+            .expect('Content-Type', /application\/json/)
+    })
+
+    test('Password wrong', async () => {
+
+        await request(api).post('/login')
+            .send({
+                username: "Pepo",
+                password: "pepe"
+            })
+            .expect(402)
+            .expect('Content-Type', /application\/json/)
+    })
+
+    test('User doesnt exist', async () => {
+
+        await request(api).post('/login')
+            .send({
+                username: "Pepe",
+                password: "pepo"
+            })
+            .expect(404)
+            .expect('Content-Type', /application\/json/)
+    })
+
 })
+
+
 
 describe('GET /login/renew', () => {
 

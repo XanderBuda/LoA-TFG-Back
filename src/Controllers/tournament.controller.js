@@ -9,7 +9,7 @@ tournamentController.getTournament = async (req, res) => {
         if (!tournament) return res.status(404).send({ message: `El torneo no existe` });
         res.status(200).json(tournament);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -121,7 +121,7 @@ tournamentController.assignTeam = async (req, res) => {
         if (!editedTournament) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json(editedTournament);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -133,7 +133,7 @@ tournamentController.removeTeam = async (req, res) => {
         if (!editedTournament) return res.status(404).send({ message: 'El torneo no existe' });
         res.status(200).json(editedTournament);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -147,7 +147,7 @@ tournamentController.assignAdmin = async (req, res) => {
         if (!editedTournament) return res.status(404).json({ message: 'El equipo no se puede eliminar del torneo' });
         return res.status(200).json(editedTournament);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -158,7 +158,7 @@ tournamentController.getNumberOfTeams = async (req, res) => {
         if (tournament.teams.length == 0) return res.status(402).send({ message: `El torneo no tiene equipos` });
         res.status(200).json(tournament.teams.length);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 

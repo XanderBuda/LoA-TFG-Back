@@ -114,7 +114,7 @@ const teamController = require('../Controllers/team.controller');
  *       404:
  *         description: No hay equipos
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/all', validarJWT, teamController.getTeams);
@@ -148,7 +148,7 @@ router.get('/all', validarJWT, teamController.getTeams);
  *       404:
  *         description: Este equipo no participa en ningún torneo
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/getTournament', validarJWT, teamController.getTournament);
@@ -182,7 +182,7 @@ router.get('/getTournament', validarJWT, teamController.getTournament);
  *       404:
  *         description: El equipo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/:id?', validarJWT, teamController.getTeam);
@@ -219,7 +219,7 @@ router.get('/:id?', validarJWT, teamController.getTeam);
  *       404:
  *         description: El equipo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
@@ -254,7 +254,7 @@ router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
  *       401:
  *         description: Token no válido
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.post('/new', validarJWT, validations.postTeamChecks, teamController.createTeam);
@@ -295,7 +295,7 @@ router.post('/new', validarJWT, validations.postTeamChecks, teamController.creat
  *       404:
  *         description: El equipo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.put('/update/:id', validarJWT, teamController.editTeam);
@@ -347,7 +347,7 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *       404:
  *         description: El equipo no existe
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamController.assignUser);
@@ -399,7 +399,7 @@ router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *       404:
  *         description: El usuario no se puede eliminar del equipo
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 
 router.put('/removeUser/:id', validarJWT, validations.putTeamUserChecks, teamController.removeUser);
@@ -423,7 +423,7 @@ router.put('/removeUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *       404:
  *         description: El equipo no se puede eliminar
  *       500:
- *         description: Error al realizar la peticion + /custom_message/
+ *         description: Error al realizar la petición + /custom_message/
  */
 router.delete('/delete', validarJWT, teamController.deleteTeam);
 

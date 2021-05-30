@@ -8,3 +8,5 @@ mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true, u
     console.log(`Conexion a la base de datos establecida en ${config.db}`);
 
 });
+
+

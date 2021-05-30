@@ -10,7 +10,7 @@ teamController.getTeams = async (req, res) => {
         if (teams.length == 0) return res.status(404).json({ message: `No hay equipos` });
         res.status(200).json(teams);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -20,7 +20,7 @@ teamController.getTeam = async (req, res) => {
         if (!team) return res.status(404).json({ message: 'El equipo no existe' });
         res.status(200).json(team);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -32,7 +32,7 @@ teamController.createTeam = async (req, res) => {
         if (!newTeam) return res.status(404).json({ message: 'No se ha podido guardar el equipo' });
         res.status(200).json({ message: 'Equipo guardado correctamente' });
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -42,7 +42,7 @@ teamController.editTeam = async (req, res) => {
         if (!editedTeam) return res.status(404).json({ message: 'El equipo no existe' });
         return res.status(200).json(editedTeam);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -58,7 +58,7 @@ teamController.deleteTeam = async (req, res) => {
         if (!deletedTeam) return res.status(404).json({ message: 'El equipo no se puede eliminar' });
         res.status(200).json({ message: 'Equipo eliminado correctamente' });
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -78,7 +78,7 @@ teamController.uploadLogo = async (req, res) => {
                 if (!team) return res.status(404).json({ message: 'El equipo no existe' });
                 res.status(200).json(team);
             } catch (error) {
-                res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+                res.status(500).json({ message: `Error al realizar la petición ${error}` });
             }
         } else {
             await fs.unlink(filePath);
@@ -107,7 +107,7 @@ teamController.assignUser = async (req, res) => {
         if (!editedTeam) return res.status(404).json({ message: 'El equipo no existe' });
         return res.status(200).json(editedTeam);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -122,7 +122,7 @@ teamController.removeUser = async (req, res) => {
         if (!editedTeam) return res.status(404).json({ message: 'El usuario no se puede eliminar del equipo' });
         return res.status(200).json(editedTeam);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -133,7 +133,7 @@ teamController.assignAdmin = async (req, res) => {
         if (!editedTeam) return res.status(404).json({ message: 'El equipo no existe' });
         return res.status(200).json(editedTeam);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -144,7 +144,7 @@ teamController.getNumberOfUsers = async (req, res) => {
         if (team.users.length == 0) return res.status(402).json({ message: 'El equipo no tiene usuarios' });
         res.status(200).json(team.users.length);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -162,7 +162,7 @@ teamController.getTournament = async (req, res) => {
         //res.status(200).json(teamTournament[0].name);
         res.status(200).json(teamTournament);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 

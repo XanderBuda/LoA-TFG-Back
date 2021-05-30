@@ -13,7 +13,7 @@ const login = async (req, res) => {
 
         //verificar contraseña
         const validPassword = bcrypt.compareSync(password, userDB.password);
-        if (!validPassword) return res.status(402).send({ message: `La contraseña no es correcta` });
+        if (!validPassword) return res.status(400).send({ message: `La contraseña no es correcta` });
 
         let token = await generarJWT(userDB.id);
         token = `Bearer ${token}`;
@@ -21,7 +21,7 @@ const login = async (req, res) => {
         res.status(200).json({ message: 'Login correcto', Authorization: token });
 
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 

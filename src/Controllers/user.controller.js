@@ -13,7 +13,7 @@ userController.getUsers = async (req, res) => {
         if (users.length == 0) return res.status(404).send({ message: `No hay usuarios` });
         res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -23,7 +23,7 @@ userController.getUserById = async (req, res) => {
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
         res.status(200).json(user);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -84,7 +84,7 @@ userController.getTeam = async (req, res) => {
         if (userTeam.length === 0) return res.status(404).json({ message: `Este usuario no tiene equipo` });
         res.status(200).json(userTeam);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -99,12 +99,12 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         const userPetitions = petitions.filter((petition) => petition.receiver == _id);
 
 
-        if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiones pendientes` });
+        if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiónes pendientes` });
 
         res.status(200).json(userPetitions);
 
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     };
 }
 
