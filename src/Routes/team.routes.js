@@ -109,12 +109,52 @@ const teamController = require('../Controllers/team.controller');
  *                  $ref: '#/components/schemas/Team'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: No hay equipos
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No hay equipos
+ *               example:
+ *                 message: No hay equipos
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/all', validarJWT, teamController.getTeams);
@@ -143,12 +183,52 @@ router.get('/all', validarJWT, teamController.getTeams);
  *               $ref: '#/components/schemas/Tournament'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: Este equipo no participa en ningún torneo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Este equipo no participa en ningún torneo
+ *               example:
+ *                 message: Este equipo no participa en ningún torneo
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/getTournament', validarJWT, teamController.getTournament);
@@ -177,12 +257,52 @@ router.get('/getTournament', validarJWT, teamController.getTournament);
  *               $ref: '#/components/schemas/Team'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no existe
+ *               example:
+ *                 message: El equipo no existe
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/:id?', validarJWT, teamController.getTeam);
@@ -211,15 +331,53 @@ router.get('/:id?', validarJWT, teamController.getTeam);
  *               type: number
  *               example: 3
  *       400:
- *         description: No existe web token
+ *         description: El equipo no tiene usuarios
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no tiene usuarios
+ *               example:
+ *                 message: El equipo no tiene usuarios
  *       401:
  *         description: Token no válido
- *       402:
- *         description: El equipo no tiene usuarios
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no existe
+ *               example:
+ *                 message: El equipo no existe
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
@@ -249,12 +407,64 @@ router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
  *     responses:
  *       200:
  *         description: Equipo guardado correctamente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Equipo guardado correctamente
+ *               example:
+ *                 message: Equipo guardado correctamente
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       409:
+ *         description: No se ha podido guardar el equipo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No se ha podido guardar el equipo
+ *               example:
+ *                 message: No se ha podido guardar el equipo
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.post('/new', validarJWT, validations.postTeamChecks, teamController.createTeam);
@@ -290,12 +500,52 @@ router.post('/new', validarJWT, validations.postTeamChecks, teamController.creat
  *               $ref: '#/components/schemas/Team'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no existe
+ *               example:
+ *                 message: El equipo no existe
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.put('/update/:id', validarJWT, teamController.editTeam);
@@ -338,16 +588,64 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *               $ref: '#/components/schemas/Team'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       402:
- *         description: El equipo está lleno
- *       403:
- *         description: El usuario ya está en el equipo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no existe
+ *               example:
+ *                 message: El equipo no existe
+ *       409:
+ *         description: "El equipo está lleno || El usuario ya está en el equipo"
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: "El equipo está lleno || El usuario ya está en el equipo"
+ *               example:
+ *                 message: El equipo está lleno
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamController.assignUser);
@@ -390,16 +688,64 @@ router.put('/assignUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *               $ref: '#/components/schemas/Team'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       402:
- *         description: El administrador no se puede eliminar del equipo
- *       403:
- *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
- *         description: El usuario no se puede eliminar del equipo
+ *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no existe
+ *               example:
+ *                 message: El equipo no existe
+ *       409:
+ *         description: "El usuario/administrador no se puede eliminar del equipo"
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: "El usuario/administrador no se puede eliminar del equipo"
+ *               example:
+ *                 message: El administrador no se puede eliminar del equipo
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.put('/removeUser/:id', validarJWT, validations.putTeamUserChecks, teamController.removeUser);
@@ -416,14 +762,64 @@ router.put('/removeUser/:id', validarJWT, validations.putTeamUserChecks, teamCon
  *     responses:
  *       200:
  *         description: Equipo eliminado correctamente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Equipo eliminado correctamente
+ *               example:
+ *                 message: Equipo eliminado correctamente
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       404:
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       409:
  *         description: El equipo no se puede eliminar
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El equipo no se puede eliminar
+ *               example:
+ *                 message: El equipo no se puede eliminar
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 router.delete('/delete', validarJWT, teamController.deleteTeam);
 
