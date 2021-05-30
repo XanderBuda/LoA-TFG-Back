@@ -55,6 +55,7 @@ userController.newUser = async (req, res) => {
 
 userController.updateUser = async (req, res) => {
     try {
+        
         const userUpdate = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
         if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ user: userUpdate });
@@ -64,6 +65,7 @@ userController.updateUser = async (req, res) => {
 }
 
 userController.deleteUser = async (req, res) => {
+    
     const _id = req.id;
     try {
         const userDelete = await User.findByIdAndDelete(_id);

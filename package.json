@@ -7,7 +7,8 @@
     "start:dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "test:auth": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/auth.test.js",
-    "test:team": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/team.test.js"
+    "test:team": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/team.test.js",
+    "test:user": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/user.test.js"
   },
   "jest": {
     "testEnvironment": "node"
