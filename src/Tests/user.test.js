@@ -2,8 +2,8 @@ const request = require('supertest');
 const { api } = require('../index');
 const User = require('../Models/User');
 const { generarJWT } = require('../Helpers/jwt');
-var token;
-var user;
+var token, user;
+
 var mockUser = {
     username: "Pepo",
     email: "pepo@gmail.com",
@@ -38,7 +38,7 @@ describe('GET /user/all', () => {
         await User.deleteMany({})
         await request(api).get('/user/all')
             .set('Authorization', token)
-            .expect(400)
+            .expect(404)
             .expect('Content-Type', /application\/json/)
     })
 
@@ -155,6 +155,31 @@ describe('PUT /user/update/:id', () => {
             .expect('Content-Type', /application\/json/)
     })
 
+    test('No envío token', async () => {
+        await request(api).put('/user/update/' + user.id)
+            .send({
+                roles: {
+                    first: "Toplane",
+                    second: "Adc"
+                }
+            })
+            .expect(400)
+            .expect('Content-Type', /application\/json/)
+    })
+
+    test('Token falso', async () => {
+        await request(api).put('/user/update/' + user.id)
+            .set('Authorization', 'Bearer asedfrgbdfsb.3456546')
+            .send({
+                roles: {
+                    first: "Toplane",
+                    second: "Adc"
+                }
+            })
+            .expect(401)
+            .expect('Content-Type', /application\/json/)
+    })
+
     test('Actualizo un usuario no existente', async () => {
         await User.deleteMany({})
         await request(api).put('/user/update/' + user.id)
@@ -208,7 +233,7 @@ describe('DELETE /user/delete', () => {
             .expect('Content-Type', /application\/json/)
     })
 
-    test('No envio token', async () => {
+    test('Token falso', async () => {
 
         await request(api).delete('/user/delete')
             .set('Authorization', 'Bearer asedfrgbdfsb.3456546')
