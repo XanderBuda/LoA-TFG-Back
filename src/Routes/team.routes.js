@@ -418,7 +418,7 @@ router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
  *               example:
  *                 message: Equipo guardado correctamente
  *       400:
- *         description: No existe web token
+ *         description: "Error: Bad Request"
  *         content: 
  *           application/json:
  *             schema:
@@ -426,7 +426,7 @@ router.get('/numberOfUsers/:id', validarJWT, teamController.getNumberOfUsers);
  *               properties:
  *                 message: 
  *                   type: string
- *                   description: No existe web token
+ *                   description: "Error: Bad Request"
  *               example:
  *                 message: No existe web token
  *       401:
@@ -587,7 +587,7 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *             schema:
  *               $ref: '#/components/schemas/Team'
  *       400:
- *         description: No existe web token
+ *         description: "Error: Bad Request"
  *         content: 
  *           application/json:
  *             schema:
@@ -595,7 +595,7 @@ router.put('/update/:id', validarJWT, teamController.editTeam);
  *               properties:
  *                 message: 
  *                   type: string
- *                   description: No existe web token
+ *                   description: "Error: Bad Request"
  *               example:
  *                 message: No existe web token
  *       401:

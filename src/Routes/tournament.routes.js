@@ -330,7 +330,7 @@ router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTea
  *               example:
  *                 message: Torneo guardado correctamente
  *       400:
- *         description: No existe web token
+ *         description: "Error: Bad Request"
  *         content: 
  *           application/json:
  *             schema:
@@ -338,7 +338,7 @@ router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTea
  *               properties:
  *                 message: 
  *                   type: string
- *                   description: No existe web token
+ *                   description: "Error: Bad Request"
  *               example:
  *                 message: No existe web token
  *       401:
@@ -511,7 +511,7 @@ router.put('/update/:id', validarJWT, tournamentController.updateTournament);
  *             schema:
  *               $ref: '#/components/schemas/Tournament'
  *       400:
- *         description: No existe web token
+ *         description: "Error: Bad Request"
  *         content: 
  *           application/json:
  *             schema:
@@ -519,7 +519,7 @@ router.put('/update/:id', validarJWT, tournamentController.updateTournament);
  *               properties:
  *                 message: 
  *                   type: string
- *                   description: No existe web token
+ *                   description: "Error: Bad Request"
  *               example:
  *                 message: No existe web token
  *       401:
