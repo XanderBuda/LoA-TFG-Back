@@ -29,7 +29,7 @@ teamController.createTeam = async (req, res) => {
         const _id = req.id;
         const newTeam = new Team({ admin: _id, users: _id, ...req.body }); //Al crear equipo el admin y el primer integrante es el creador del equipo
         await newTeam.save();
-        if (!newTeam) return res.status(404).json({ message: 'No se ha podido guardar el equipo' });
+        if (!newTeam) return res.status(409).json({ message: 'No se ha podido guardar el equipo' });
         res.status(200).json({ message: 'Equipo guardado correctamente' });
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });
@@ -55,7 +55,7 @@ teamController.deleteTeam = async (req, res) => {
         const teamDeleted = team.filter((team) => team.admin == _id);
 
         const deletedTeam = await Team.findByIdAndDelete(teamDeleted[0].id);
-        if (!deletedTeam) return res.status(404).json({ message: 'El equipo no se puede eliminar' });
+        if (!deletedTeam) return res.status(409).json({ message: 'El equipo no se puede eliminar' });
         res.status(200).json({ message: 'Equipo eliminado correctamente' });
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });
@@ -82,7 +82,7 @@ teamController.uploadLogo = async (req, res) => {
             }
         } else {
             await fs.unlink(filePath);
-            res.status(200).json({ message: 'La extensión no es válida' });
+            res.status(400).json({ message: 'La extensión no es válida' });
         }
     } else {
         res.status(200).json(fileName);
@@ -94,12 +94,12 @@ teamController.assignUser = async (req, res) => {
     try {
         //EL EQUIPO ESTÁ LLENO
         const team = await Team.findById(req.params.id);
-        if (team.users.length >= 5) return res.status(402).json({ message: 'El equipo está lleno' });
+        if (team.users.length >= 5) return res.status(409).json({ message: 'El equipo está lleno' });
         let encontrado = false;
         team.users.forEach(element => {
             if (element == req.body.user) { encontrado = true }
         });
-        if (encontrado) return res.status(403).json({ message: 'El usuario ya está en el equipo' });
+        if (encontrado) return res.status(409).json({ message: 'El usuario ya está en el equipo' });
         //####################
 
         const { user } = req.body;
@@ -115,11 +115,11 @@ teamController.removeUser = async (req, res) => {
     try {
         const { user } = req.body;
         const teamAdmin = await Team.findById(req.params.id);
-        if (!teamAdmin) return res.status(403).json({ message: 'El equipo no existe' });
-        if(teamAdmin.admin == user) return res.status(402).json({ message: 'El administrador no se puede eliminar del equipo' });
+        if (!teamAdmin) return res.status(404).json({ message: 'El equipo no existe' });
+        if(teamAdmin.admin == user) return res.status(409).json({ message: 'El administrador no se puede eliminar del equipo' });
 
         const editedTeam = await Team.findByIdAndUpdate(req.params.id, { $pull: { users: user } }, { new: true });
-        if (!editedTeam) return res.status(404).json({ message: 'El usuario no se puede eliminar del equipo' });
+        if (!editedTeam) return res.status(409).json({ message: 'El usuario no se puede eliminar del equipo' });
         return res.status(200).json(editedTeam);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });
@@ -141,7 +141,7 @@ teamController.getNumberOfUsers = async (req, res) => {
     try {
         const team = await Team.findById(req.params.id);
         if (!team) return res.status(404).json({ message: 'El equipo no existe' });
-        if (team.users.length == 0) return res.status(402).json({ message: 'El equipo no tiene usuarios' });
+        if (team.users.length == 0) return res.status(400).json({ message: 'El equipo no tiene usuarios' });
         res.status(200).json(team.users.length);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });
@@ -158,8 +158,7 @@ teamController.getTournament = async (req, res) => {
         const teamTournament = tournament.filter((tournament) => tournament.teams.length > 0);
 
         if (teamTournament.length === 0) return res.status(404).json({ message: `Este equipo no participa en ningún torneo` });
-        console.log(teamTournament);
-        //res.status(200).json(teamTournament[0].name);
+        
         res.status(200).json(teamTournament);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });

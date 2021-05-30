@@ -27,10 +27,16 @@ const login = async (req, res) => {
 
 const renewToken = async (req, res) => {
     const _id = req.id;
-    let token = await generarJWT(_id);
-    token = `Bearer ${token}`;
 
-    res.status(200).json({token_renovado:token});
+    try {
+
+        let token = await generarJWT(_id);
+        token = `Bearer ${token}`;
+
+        res.status(200).json({ token_renovado: token });
+    } catch (error) {
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
+    }
 
 }
 module.exports = { login, renewToken };

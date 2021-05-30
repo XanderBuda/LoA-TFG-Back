@@ -132,8 +132,40 @@ router.post('/', validations.postLogin, login);
  *                 token_renovado: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N2FmMWNlZjJhNDRmZGE3MGQiLCJpYXQiOjE2MjIxOTA5NDQsImV4cCI6MTYyMjIzNDE0NH0.oy4ultqjxWrNfJbptFd6jOapIGnw8haCpsFfhGCa9Pq
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       500:
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/renew', validarJWT, renewToken);

@@ -10,7 +10,7 @@ const userController = {};
 userController.getUsers = async (req, res) => {
     try {
         const users = await User.find();
-        if (users.length == 0) return res.status(404).send({ message: `No hay usuarios` });
+        if (users.length == 0) return res.status(400).send({ message: `No hay usuarios` });
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición: ${error}` });
@@ -40,7 +40,7 @@ userController.newUser = async (req, res) => {
 
         await user.save();
 
-        if (!user) return res.status(404).send({ message: 'No se ha podido guardar el usuario' });
+        if (!user) return res.status(409).send({ message: 'No se ha podido guardar el usuario' });
 
         //generar el token
         let token = await generarJWT(user.id);
@@ -81,7 +81,7 @@ userController.getTeam = async (req, res) => {
 
         const userTeam = team.filter((team) => team.users.length > 0);
 
-        if (userTeam.length === 0) return res.status(404).json({ message: `Este usuario no tiene equipo` });
+        if (userTeam.length === 0) return res.status(400).json({ message: `Este usuario no tiene equipo` });
         res.status(200).json(userTeam);
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });
@@ -99,7 +99,7 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         const userPetitions = petitions.filter((petition) => petition.receiver == _id);
 
 
-        if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiónes pendientes` });
+        if (userPetitions.length === 0) return res.status(204).json({ message: `Este usuario no tiene peticiónes pendientes` });
 
         res.status(200).json(userPetitions);
 
