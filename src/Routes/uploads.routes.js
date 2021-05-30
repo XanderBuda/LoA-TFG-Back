@@ -32,7 +32,7 @@ router.use(expresFileUpload());
  *       schema:
  *         type: string
  *         enum: [ User, Team , Tournament] 
- *       description: El tipo donde se va subir la imagen en relacion a tu usuario
+ *       description: El tipo de esquema donde se va subir la imagen en relacion a tu usuario
  *     requestBody:
  *       content:
  *         multipart/form-data:
@@ -51,7 +51,7 @@ router.use(expresFileUpload());
  *               type: object
  *               properties:
  *                 ok: 
- *                   type: string
+ *                   type: boolean
  *                   description: Indica true si ha ido bien y false si no
  *                 msg:
  *                    type: string
@@ -62,21 +62,75 @@ router.use(expresFileUpload());
  *               example:     
  *                 ok: true
  *                 msg: File Upload
- *                 fileName: "569a5d50-7e94-4b83-858f-ce8f8a619bda.jpg" 
+ *                 fileName: "569a5d50-7e94-4b83-858f-ce8f8a619bda.jpg"
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       402:
- *         description: Invalid type valid types Team User Tournament
- *       403:
- *         description: Invalid extension valid extensions png jpg jpeg
- *       404:
- *         description: No files were uploaded. 
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       409:
+ *         description: Extensión no válida
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok: 
+ *                   type: boolean
+ *                   description: Indica true si ha ido bien y false si no
+ *                 msg:
+ *                    type: string
+ *                    description: El mensaje del estado de la subida
+ *               example:
+ *                 ok: false
+ *                 msg: "Invalid extension (valid extensions: png, jpg, jpeg)"
  *       500:
- *         description: Error al subir archivo + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  *       501:
- *         description: Error al mover la imagen   
+ *         description: Error al mover la imagen
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok: 
+ *                   type: boolean
+ *                   description: Indica true si ha ido bien y false si no
+ *                 msg:
+ *                    type: string
+ *                    description: El mensaje del estado de la subida
+ *               example:
+ *                 ok: false
+ *                 msg: Error al mover la imagen
  */
 router.put('/:type',validarJWT,uploadController.fileUpload);
 
@@ -95,16 +149,46 @@ router.put('/:type',validarJWT,uploadController.fileUpload);
  *       schema:
  *         type: string
  *         enum: [ User, Team , Tournament] 
- *       description: El tipo donde se va cargar la imagen en relacion a tu usuario 
+ *       description: El tipo de esquema donde se va cargar la imagen en relacion a tu usuario 
  *     responses:
+ *       200:
+ *         description: Muestra la imagen
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
- *         description: Token no válido 
- *       200:
- *         description: Muesta la imagen
+ *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido 
  *       500:
- *         description: Error al cargar archivo + /custom_message/  
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/  
  */
 router.get('/:type',validarJWT,uploadController.getFile);
 

@@ -95,12 +95,52 @@ const tournamentController = require('../Controllers/tournament.controller');
  *                  $ref: '#/components/schemas/Tournament'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: No hay torneos
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No hay torneos
+ *               example:
+ *                 message: No hay torneos
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/all', validarJWT, tournamentController.getTournaments);
@@ -129,12 +169,52 @@ router.get('/all', validarJWT, tournamentController.getTournaments);
  *               $ref: '#/components/schemas/Tournament'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El torneo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no existe
+ *               example:
+ *                 message: El torneo no existe
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/:id?', validarJWT, tournamentController.getTournament);
@@ -163,15 +243,53 @@ router.get('/:id?', validarJWT, tournamentController.getTournament);
  *               type: number
  *               example: 8
  *       400:
- *         description: No existe web token
+ *         description: El torneo no tiene equipos
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no tiene equipos
+ *               example:
+ *                 message: El torneo no tiene equipos
  *       401:
  *         description: Token no válido
- *       402:
- *         description: El torneo no tiene equipos
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El torneo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no existe
+ *               example:
+ *                 message: El torneo no existe
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTeams);
@@ -201,12 +319,64 @@ router.get('/numberOfTeams/:id', validarJWT, tournamentController.getNumberOfTea
  *     responses:
  *       200:
  *         description: Torneo guardado correctamente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Torneo guardado correctamente
+ *               example:
+ *                 message: Torneo guardado correctamente
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       409:
+ *         description: No se ha podido guardar el torneo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No se ha podido guardar el torneo
+ *               example:
+ *                 message: No se ha podido guardar el torneo
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.post('/new', validarJWT, validations.postTournamentChecks, tournamentController.saveTournament);
@@ -242,14 +412,64 @@ router.post('/new', validarJWT, validations.postTournamentChecks, tournamentCont
  *               $ref: '#/components/schemas/Tournament'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       402:
- *         description: Tamaño de torneo no permitido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El torneo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no existe
+ *               example:
+ *                 message: El torneo no existe
+ *       409:
+ *         description: Tamaño de torneo no permitido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Tamaño de torneo no permitido
+ *               example:
+ *                 message: Tamaño de torneo no permitido
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.put('/update/:id', validarJWT, tournamentController.updateTournament);
@@ -292,16 +512,64 @@ router.put('/update/:id', validarJWT, tournamentController.updateTournament);
  *               $ref: '#/components/schemas/Tournament'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       402:
- *         description: El torneo está lleno
- *       403:
- *         description: El equipo ya está en el torneo
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
  *         description: El torneo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no existe
+ *               example:
+ *                 message: El torneo no existe
+ *       409:
+ *         description: "El torneo está lleno || El equipo ya está en el torneo"
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: "El torneo está lleno || El equipo ya está en el torneo"
+ *               example:
+ *                 message: El torneo está lleno
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.put('/assignTeam/:id', validarJWT, validations.putTournamentTeamChecks, tournamentController.assignTeam);
@@ -344,14 +612,52 @@ router.put('/assignTeam/:id', validarJWT, validations.putTournamentTeamChecks, t
  *               $ref: '#/components/schemas/Tournament'
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       403:
- *         description: El equipo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
  *       404:
- *         description: El equipo no se puede eliminar del torneo
+ *         description: El torneo no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no existe
+ *               example:
+ *                 message: El torneo no existe
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 
 router.put('/removeTeam/:id', validarJWT, validations.putTournamentTeamChecks, tournamentController.removeTeam);
@@ -368,14 +674,64 @@ router.put('/removeTeam/:id', validarJWT, validations.putTournamentTeamChecks, t
  *     responses:
  *       200:
  *         description: Torneo eliminado correctamente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Torneo eliminado correctamente
+ *               example:
+ *                 message: Torneo eliminado correctamente
  *       400:
  *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
  *       401:
  *         description: Token no válido
- *       404:
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       409:
  *         description: El torneo no se puede eliminar
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El torneo no se puede eliminar
+ *               example:
+ *                 message: El torneo no se puede eliminar
  *       500:
- *         description: Error al realizar la petición + /custom_message/
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
  */
 router.delete('/delete', validarJWT, tournamentController.deleteTournament);
 

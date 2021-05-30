@@ -30,7 +30,7 @@ tournamentController.saveTournament = async (req, res) => {
         const tournament = new Tournament({ admin: _id, ...req.body });
         await tournament.save();
         if (!tournament) return res.status(409).send({ message: 'No se ha podido guardar el torneo' });
-        res.status(200).json(tournament);
+        res.status(200).json({ message: 'Torneo guardado correctamente' });
     } catch (error) {
         res.status(500).json({ message: `Error al guardar el torneo: ${error}` });
     }
@@ -57,10 +57,10 @@ tournamentController.deleteTournament = async (req, res) => {
     try {
         const tournament = await Tournament.find();
         const tournamentDeleted = tournament.filter((tournament) => tournament.admin == _id);
-        const deletedTournament = await Tournament.findByIdAndDelete(tournamentDeleted[0].id);
 
-        if (!deletedTournament) return res.status(404).send({ message: 'El torneo no existe' });
-        res.status(200).json({ message: "Torneo borrado" });
+        const deletedTournament = await Tournament.findByIdAndDelete(tournamentDeleted[0].id);
+        if (!deletedTournament) return res.status(409).send({ message: 'El torneo no se puede eliminar' });
+        res.status(200).json({ message: "Torneo eliminado correctamente" });
     } catch (error) {
         res.status(500).json({ message: `Error al borrar el torneo: ${error}` });
     }
