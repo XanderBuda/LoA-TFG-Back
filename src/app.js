@@ -31,9 +31,6 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 const app = express();
 
-
-
-
 //RUTAS
 var userRoutes = require('./Routes/user.routes');
 var teamRoutes = require('./Routes/team.routes');
