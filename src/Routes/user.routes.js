@@ -132,7 +132,7 @@ const userController = require('../Controllers/user.controller');
  *       404:
  *         description: No hay usuarios
  *       500:
- *         description: ERROR al realizar la peticion + /custom_message/  
+ *         description: ERROR al realizar la petición + /custom_message/  
  */
 router.get('/all', validarJWT, userController.getUsers);
 

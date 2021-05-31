@@ -17,16 +17,16 @@ uploadController.fileUpload = (req, res = response) => {
 
         //Valida que es de un tipo valido
         if (!validTypes.includes(type)) {
-            return res.status(402).json({
+            return res.status(409).json({
                 ok: false,
                 msg: 'Invalid type (valid types: Team, User, Tournament)'
             });
         }
 
-        console.log(typeof req.files, req.files);
-        // Vallida que existe un archivo
+        
+        // Valida que existe un archivo
         if (!req.files || Object.keys(req.files).length === 0) {
-            return res.status(404).send({
+            return res.status(400).send({
                 ok: false,
                 msg: 'No files were uploaded.'
             });
@@ -41,7 +41,7 @@ uploadController.fileUpload = (req, res = response) => {
         //Validar extensión
         const validExtensions = ['png', 'jpg', 'jpeg'];
         if (!validExtensions.includes(fileExtension)) {
-            return res.status(403).send({
+            return res.status(409).send({
                 ok: false,
                 msg: 'Invalid extension (valid extensions: png, jpg, jpeg)'
             });
@@ -56,7 +56,7 @@ uploadController.fileUpload = (req, res = response) => {
         //Mover la imagen
         file.mv(path, (err) => {
             if (err) {
-                console.log(err);
+                
                 return res.status(501).json({
                     ok: false,
                     msg: 'Error al mover la imagen'
@@ -86,7 +86,7 @@ uploadController.getFile = async (req, res = response) => {
         const _id = req.id
 
         let pathImg = await getImage(type, _id);
-        console.log(fs.existsSync(pathImg), pathImg);
+        
         
         if (fs.existsSync(pathImg)) {
             res.sendFile(pathImg);

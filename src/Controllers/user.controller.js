@@ -13,7 +13,7 @@ userController.getUsers = async (req, res) => {
         if (users.length == 0) return res.status(404).send({ message: `No hay usuarios` });
         res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -23,7 +23,7 @@ userController.getUserById = async (req, res) => {
         if (!user) return res.status(404).send({ message: `El usuario no existe` });
         res.status(200).json(user);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion: ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición: ${error}` });
     }
 }
 
@@ -40,7 +40,7 @@ userController.newUser = async (req, res) => {
 
         await user.save();
 
-        if (!user) return res.status(404).send({ message: 'No se ha podido guardar el usuario' });
+        if (!user) return res.status(409).send({ message: 'No se ha podido guardar el usuario' });
 
         //generar el token
         let token = await generarJWT(user.id);
@@ -55,6 +55,7 @@ userController.newUser = async (req, res) => {
 
 userController.updateUser = async (req, res) => {
     try {
+        
         const userUpdate = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
         if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ user: userUpdate });
@@ -64,6 +65,7 @@ userController.updateUser = async (req, res) => {
 }
 
 userController.deleteUser = async (req, res) => {
+    
     const _id = req.id;
     try {
         const userDelete = await User.findByIdAndDelete(_id);
@@ -81,10 +83,10 @@ userController.getTeam = async (req, res) => {
 
         const userTeam = team.filter((team) => team.users.length > 0);
 
-        if (userTeam.length === 0) return res.status(404).json({ message: `Este usuario no tiene equipo` });
+        if (userTeam.length === 0) return res.status(400).json({ message: `Este usuario no tiene equipo` });
         res.status(200).json(userTeam);
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     }
 }
 
@@ -99,12 +101,12 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         const userPetitions = petitions.filter((petition) => petition.receiver == _id);
 
 
-        if (userPetitions.length === 0) return res.status(200).json({ message: `Este usuario no tiene peticiones pendientes` });
+        if (userPetitions.length === 0) return res.status(204).json({ message: `Este usuario no tiene peticiónes pendientes` });
 
         res.status(200).json(userPetitions);
 
     } catch (error) {
-        res.status(500).json({ message: `Error al realizar la peticion ${error}` });
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
     };
 }
 
