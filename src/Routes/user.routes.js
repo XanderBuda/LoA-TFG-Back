@@ -118,20 +118,55 @@ const userController = require('../Controllers/user.controller');
  *     tags: [User] 
  *     responses:
  *       200:
- *         description: La lista de usuarios
+ *         description: Muestra la lista de usuarios
  *         content: 
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                  $ref: '#/components/schemas/User'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
  *       404:
  *         description: No hay usuarios
  *       500:
  *         description: ERROR al realizar la peticion + /custom_message/  
  */
-
 router.get('/all', validarJWT, userController.getUsers);
+
+/**
+ * @swagger
+ * /user/getTeam?username:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Devuelve el equipo al que pertenece un usuario
+ *     tags: [User] 
+ *     parameters:
+ *       - name: username
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El nombre de usuario a buscar
+ *     responses:
+ *       200:
+ *         description: Muestra el equipo al que pertenece el usuario
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Team'
+ *       400:
+ *         description: No existe web token
+ *       401:
+ *         description: Token no válido
+ *       404:
+ *         description: Este usuario no tiene equipo
+ *       500:
+ *         description: ERROR al realizar la peticion + /custom_message/  
+ */
 router.get('/getTeam', validarJWT, userController.getTeam);
 router.get('/getAllPetitionsForTheUser', validarJWT, userController.getAllPetitionsForTheUser);
 router.get('/:id?', validarJWT, userController.getUserById);
