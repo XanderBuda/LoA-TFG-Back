@@ -468,6 +468,18 @@ router.get('/:id', validarJWT, userController.getUserById);
  *                  first: Toplane
  *                  second: Adc
  *                 Autorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI3ZTg1ZTAyZmM5YzUyZTQ0ZGIxNDkiLCJpYXQiOjE2MjI2NjUzMTAsImV4cCI6MTYyMjcwODUxMH0.jB5mc_gGs_Sk8wRPd9QbzKlk2fZRr8ZtVVK4Nze6zYw
+ *       400:
+ *         description: "Error: Bad Request"
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: "Error: Bad Request"
+ *               example:
+ *                 message: No existe web token
  *       409:
  *         description: No se ha podido guardar el usuario
  *         content: 
