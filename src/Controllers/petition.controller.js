@@ -13,7 +13,7 @@ petitionController.createPetitionForUsers = async (req, res) => {
         if (teamId) {
             const team = await Team.findById(teamId);
             const adminTeam = team.admin;
-            console.log(adminTeam);
+            
 
             const petition = new Petition({ emitter: _id, receiver: adminTeam, reasonTeam: teamId, adminReason: adminTeam });
 
@@ -22,7 +22,7 @@ petitionController.createPetitionForUsers = async (req, res) => {
         } else if (tournamentId) {
             const tournament = await Tournament.findById(tournamentId);
             const adminTournament = tournament.admin;
-            console.log(adminTournament);
+            
 
             const petition = new Petition({ emitter: _id, receiver: adminTournament, reasonTournament: tournamentId, adminReason: adminTournament });
 

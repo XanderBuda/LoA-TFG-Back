@@ -17,10 +17,6 @@ const swaggerOptions = {
             {
                 "url": "https://loa-backend.herokuapp.com/",
                 "description": "API Desplegada"
-            },
-            {
-                "url": "http://localhost:3700",
-                "description": "Local API"
             }
         ]
     },
