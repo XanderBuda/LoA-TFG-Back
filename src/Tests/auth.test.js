@@ -2,17 +2,25 @@ const request = require('supertest');
 const { api } = require('../index');
 const User = require('../Models/User');
 const { generarJWT } = require('../Helpers/jwt');
-var token;
+const bcrypt = require('bcryptjs');
+var token, user;
 
-
+var mockUser = {
+    username: "Pepo",
+    email: "pepo@gmail.com",
+    password: "pepo"
+}
 
 beforeEach(async () => {
-    let username = 'Pepo';
-    const user = await User.findOne({ username })
+    await User.deleteMany({});
+    user = new User(mockUser);
+    const salt = bcrypt.genSaltSync();
+    user.password = bcrypt.hashSync(mockUser.password, salt);
+    await user.save();
 
-    token = await generarJWT(user.id)
+    user = await User.findOne(user);
+    token = await generarJWT(user.id);
     token = `Bearer ${token}`;
-
 })
 
 describe('POST /login', () => {
@@ -21,8 +29,8 @@ describe('POST /login', () => {
 
         await request(api).post('/login')
             .send({
-                username: "Pepo",
-                password: "pepo"
+                username: mockUser.username,
+                password: mockUser.password
             })
             .expect(200)
             .expect('Content-Type', /application\/json/)
@@ -42,7 +50,7 @@ describe('POST /login', () => {
                 username: "Pepo",
                 password: "pepe"
             })
-            .expect(402)
+            .expect(400)
             .expect('Content-Type', /application\/json/)
     })
 

@@ -169,8 +169,8 @@ POST http://localhost:3700/login
 Content-Type: application/json
 
 {
-    "username": "AABUDA",
-    "password": "uwu"
+    "username": "Pepo",
+    "password": "pepo"
 }
 
 ### RENOVAR TOKEN USUARIO

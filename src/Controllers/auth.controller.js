@@ -4,10 +4,8 @@ const { generarJWT } = require('../Helpers/jwt');
 
 const login = async (req, res) => {
 
-    const { username, password } = req.body;
-
     try {
-
+        const { username, password } = req.body;
         const userDB = await User.findOne({ username });
         if (!userDB) return res.status(404).send({ message: `El usuario no existe` });
 

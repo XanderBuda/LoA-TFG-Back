@@ -16,3 +16,4 @@ const generarJWT = (_id) => {
 }
 
 module.exports = { generarJWT };
+

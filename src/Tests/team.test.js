@@ -191,7 +191,7 @@ describe('PUT /team/update/:id', () => {
 
     test('Actualizo un equipo no existente', async () => {
         await Team.deleteMany({})
-        await request(api).put('/user/update/' + team.id)
+        await request(api).put('/team/update/' + team.id)
             .set('Authorization', token)
             .send({
                 statistics: {
