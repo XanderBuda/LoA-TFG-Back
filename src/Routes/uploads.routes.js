@@ -88,7 +88,7 @@ router.use(expresFileUpload());
  *               example:
  *                 message: Token no válido
  *       409:
- *         description: Extensión no válida
+ *         description: Extensión no válida o tipo no valido
  *         content: 
  *           application/json:
  *             schema:
@@ -176,7 +176,23 @@ router.put('/:type',validarJWT,uploadController.fileUpload);
  *                   type: string
  *                   description: Token no válido
  *               example:
- *                 message: Token no válido 
+ *                 message: Token no válido
+ *       409:
+ *         description: Extensión no válida
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok: 
+ *                   type: boolean
+ *                   description: Indica true si ha ido bien y false si no
+ *                 msg:
+ *                    type: string
+ *                    description: El mensaje del estado de la subida
+ *               example:
+ *                 ok: false
+ *                 msg: "Invalid type (valid extensions: User, Team, Tournament)"   
  *       500:
  *         description: Error del servidor
  *         content: 

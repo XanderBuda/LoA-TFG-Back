@@ -85,6 +85,16 @@ uploadController.getFile = async (req, res = response) => {
         const type = req.params.type;
         const _id = req.id
 
+        const validTypes = ['Team', 'User', 'Tournament'];
+
+        //Valida que es de un tipo valido
+        if (!validTypes.includes(type)) {
+            return res.status(409).json({
+                ok: false,
+                msg: 'Invalid type (valid types: Team, User, Tournament)'
+            });
+        }
+
         let pathImg = await getImage(type, _id);
         
         
@@ -95,9 +105,6 @@ uploadController.getFile = async (req, res = response) => {
             pathImg = path.join(__dirname, `../Uploads/no-img.jpg`);
             res.sendFile(pathImg);
         }
-
-
-
     } catch (error) {
         res.status(500).json({ message: `Error al cargar archivo: ${error}` });
     }
