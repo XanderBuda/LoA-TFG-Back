@@ -709,6 +709,7 @@ router.delete('/delete', validarJWT, userController.deleteUser);
  *           application/json:
  *             schema:
  *                 $ref: '#/components/schemas/User'
+ *       responses:
  *       400:
  *         description: "Error: Bad Request"
  *         content: 
@@ -734,7 +735,7 @@ router.delete('/delete', validarJWT, userController.deleteUser);
  *               example:
  *                 message: Token no válido
  *       404:
- *         description: El usuario no existe
+ *         description: No existe el usuario en League of Legends
  *         content: 
  *           application/json:
  *             schema:
@@ -742,9 +743,9 @@ router.delete('/delete', validarJWT, userController.deleteUser);
  *               properties:
  *                 message: 
  *                   type: string
- *                   description: El usuario no existe
+ *                   description: Mensaje del estado  
  *               example:
- *                 message: El usuario no existe
+ *                 message: No existe el usuario en League of Legends
  *       500:
  *         description: Error del servidor
  *         content: 

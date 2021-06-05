@@ -122,6 +122,13 @@ userController.updateElo = async (req, res) => {
         const data = await fetch(url, { headers: { 'X-Riot-Token': riotToken } })
         const riotRes = await data.json();
 
+
+        if (riotRes.status && riotRes.status.status_code === 404) {
+            return res.status(404).json({
+                message: 'Usuario no existe en League of Legends'
+            });
+        }
+
         const idRiot = riotRes.id;
 
         const url2 = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${idRiot}`;
@@ -140,7 +147,6 @@ userController.updateElo = async (req, res) => {
 
         const userUpdate = await User.findByIdAndUpdate(req.id, { $set: { elo: eloRiot } }, { new: true });
 
-        if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ user: userUpdate });
 
     } catch (error) {
