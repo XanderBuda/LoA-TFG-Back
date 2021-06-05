@@ -62,11 +62,11 @@ const updateImage = async (type, id, fileName) => {
                 console.log("No se encontro el torneo por id");
                 return false;
             }
-            console.log(tournamentFiltered);
+      
 
 
             oldPath = `./src/Uploads/Tournament/${tournamentFiltered[0].logo}`;
-            console.log(tournamentFiltered[0].logo);
+          
             deleteImage(oldPath);
 
             tournamentFiltered[0].logo = fileName;
