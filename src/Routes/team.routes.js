@@ -32,7 +32,7 @@ const teamController = require('../Controllers/team.controller');
  *           properties:
  *             id:
  *               type: string
- *               description: Autogenerado al guardar en BBDD
+ *               description: El ID del usuario que crea el equipo
  *               unique: true
  *         users:
  *           type: array
@@ -305,7 +305,7 @@ router.get('/getTournament', validarJWT, teamController.getTournament);
  *                 message: Error al realizar la petición + /custom_message/
  */
 
-router.get('/:id?', validarJWT, teamController.getTeam);
+router.get('/:id', validarJWT, teamController.getTeam);
 
 /**
  * @swagger
