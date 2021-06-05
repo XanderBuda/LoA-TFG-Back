@@ -81,9 +81,346 @@ const petitionController = require('../Controllers/petition.controller');
   *   description: Peticiones sobre invitaciones entre usuarios
   */
 
+/**
+ * @swagger
+ * /petition/userToAdmin?:
+ *   post:
+ *     summary: Crear una peticion para entrar a un equipo o a un torneo
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: teamId
+ *         in: query
+ *         schema:
+ *           type: string
+ *         description: El id del equipo
+ *       - name: tournamentId
+ *         in: query
+ *         schema:
+ *           type: string
+ *         description: El id del torneo
+ *     tags: [Petition] 
+ *     responses:
+ *       200:
+ *         description: Muestra la petición
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Mensaje del estado de la peticion
+ *               example:
+ *                 message: Peticion creada correctamente
+ *       400:
+ *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
+ *       401:
+ *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       404:
+ *         description: No existe el elemento
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe el elemento
+ *               example:
+ *                 message: No existe el elemento
+ *       500:
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
+ */
 router.post('/userToAdmin',validarJWT,petitionController.createPetitionForUsers);
+
+/**
+ * @swagger
+ * /petition/adminToUserForTeam?:
+ *   post:
+ *     summary: Crear peticion de un admin para que un usuario se una a su equipo
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: teamId
+ *         in: query
+ *         schema:
+ *           type: string
+ *         description: El id del equipo
+ *     requestBody:
+ *       description: Nombre de usuario a invitar
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *             example:
+ *               username: pepe2
+ *     tags: [Petition] 
+ *     responses:
+ *       200:
+ *         description: Muestra la petición
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Mensaje del estado de la peticion
+ *               example:
+ *                 message: Peticion creada correctamente
+ *       400:
+ *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
+ *       401:
+ *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       404:
+ *         description: No existe el elemento
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe el elemento
+ *               example:
+ *                 message: No existe el elemento
+ *       500:
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
+ */
 router.post('/adminToUserForTeam',validarJWT,validations.postPetitionAdminToUserForTeam,petitionController.createPetitionForAdminsTeam);
+
+/**
+ * @swagger
+ * /petition/adminToUserForTournament?:
+ *   post:
+ *     summary: Crear peticion de un admin para que un equipo se una a su torneo
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: tournamentId
+ *         in: query
+ *         schema:
+ *           type: string
+ *         description: El id del torneo
+ *     requestBody:
+ *       description: Nombre del equipo a invitar
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *             example:
+ *               name: EEP Esports
+ *     tags: [Petition] 
+ *     responses:
+ *       200:
+ *         description: Muestra la petición
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Mensaje del estado de la peticion
+ *               example:
+ *                 message: Peticion creada correctamente
+ *       400:
+ *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
+ *       401:
+ *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       404:
+ *         description: No existe el elemento
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe el elemento
+ *               example:
+ *                 message: No existe el elemento
+ *       500:
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
+ */
 router.post('/adminToUserForTournament',validarJWT,validations.postPetitionAdminToUserForTournament,petitionController.createPetitionForAdminsTournament);
+
+/**
+ * @swagger
+ * /petition/closePetition/{id}:
+ *   delete:
+ *     summary: Elimina la petición
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: El id de la petición
+ *     tags: [Petition] 
+ *     responses:
+ *       200:
+ *         description: Equipo con id coincidente
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Mensaje del estado de petición
+ *               example:
+ *                 message: Peticion borrada
+ *       400:
+ *         description: No existe web token
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: No existe web token
+ *               example:
+ *                 message: No existe web token
+ *       401:
+ *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       404:
+ *         description: La petición no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Mensaje del estado de petición
+ *               example:
+ *                 message: La petición no existe
+ *       500:
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al borrar la petición + /custom_message/
+ */
 router.delete('/closePetition/:id', validarJWT, petitionController.closePetition);
 
 module.exports = router;
