@@ -395,7 +395,7 @@ router.get('/:id', validarJWT, userController.getUserById);
  *   post:
  *     summary: Crea un nuevo usuario
  *     requestBody:
- *       description: Datos del usuario necesarios para crear el usuario
+ *       description: Datos necesarios para crear el usuario
  *       required: true
  *       content:
  *         application/json:
