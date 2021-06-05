@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmZmM1N
 ### UPDATE A USER FOR ID
 PUT http://localhost:3700/user/update/60859ad0a9ec93272c6f11d8
 Content-Type: application/json
-x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDkwMGNlN2UzMDhmYzFmYjBkNWJmNzgiLCJpYXQiOjE2MjAwNjA3NzksImV4cCI6MTYyMDEwMzk3OX0.Hsd_NOTzu-eaEUkSfogcuBJWJ-grr5iBc8Oa_AwGpIQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhODQzYTNlYTE5ZTAwMTU0NTZmNjUiLCJpYXQiOjE2MjI4OTM0ODEsImV4cCI6MTYyMjkzNjY4MX0.pGvYFHFZZW786nc7pUyysTKE2Pbjcjfrj5Uc6gOuBqg
 
 {
     "roles": {
@@ -228,3 +228,13 @@ x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk2YzU2Y2JlZjYyMjM0Zj
 http://localhost:3700/upload/Tournament
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhODQzYTNlYTE5ZTAwMTU0NTZmNjUiLCJpYXQiOjE2MjIyMDI0MzMsImV4cCI6MTYyMjI0NTYzM30.3NTuRyb_K9aMVDr1XTK2KWK2env2w7cqntbZc_2TMXM
+
+
+### OTHER API'S ELO
+PUT http://localhost:3700/user/updateElo/RGAPI-76468715-f570-435d-a8dd-55a284295e02
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFhODQzYTNlYTE5ZTAwMTU0NTZmNjUiLCJpYXQiOjE2MjI4OTM0ODEsImV4cCI6MTYyMjkzNjY4MX0.pGvYFHFZZW786nc7pUyysTKE2Pbjcjfrj5Uc6gOuBqg
+
+{
+    "name": "Recinto"
+}

@@ -3,6 +3,7 @@ const Team = require('../Models/Team');
 const Petition = require('../Models/Petition');
 const bcrypt = require('bcryptjs');
 const { generarJWT } = require('../Helpers/jwt');
+const fetch = require('node-fetch');
 
 const userController = {};
 
@@ -55,7 +56,6 @@ userController.newUser = async (req, res) => {
 
 userController.updateUser = async (req, res) => {
     try {
-        
         const userUpdate = await User.findByIdAndUpdate(req.id, { $set: req.body }, { new: true });
         if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
         res.status(200).json({ user: userUpdate });
@@ -65,7 +65,7 @@ userController.updateUser = async (req, res) => {
 }
 
 userController.deleteUser = async (req, res) => {
-    
+
     const _id = req.id;
     try {
         const userDelete = await User.findByIdAndDelete(_id);
@@ -104,6 +104,44 @@ userController.getAllPetitionsForTheUser = async (req, res) => {
         if (userPetitions.length === 0) return res.status(204).json({ message: `Este usuario no tiene peticiónes pendientes` });
 
         res.status(200).json(userPetitions);
+
+    } catch (error) {
+        res.status(500).json({ message: `Error al realizar la petición ${error}` });
+    };
+}
+
+userController.updateElo = async (req, res) => {
+
+    try {
+
+        const { name } = req.body;
+        const { riotToken } = req.params;
+
+        const url = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`;
+
+        const data = await fetch(url, { headers: { 'X-Riot-Token': riotToken } })
+        const riotRes = await data.json();
+
+        const idRiot = riotRes.id;
+
+        const url2 = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${idRiot}`;
+        const data2 = await fetch(url2, { headers: { 'X-Riot-Token': riotToken } });
+        const riotRes2 = await data2.json();
+
+        var eloRiot = '';
+
+        if(riotRes2.length == 0){
+            eloRiot = 'UNRANKED';
+        }else{
+        const riotRes2SoloQ = riotRes2.filter((res) => res.queueType == 'RANKED_SOLO_5x5');
+
+         eloRiot = riotRes2SoloQ[0].tier + ' ' + riotRes2SoloQ[0].rank;
+        }
+
+        const userUpdate = await User.findByIdAndUpdate(req.id, { $set: { elo: eloRiot } }, { new: true });
+
+        if (!userUpdate) return res.status(404).send({ message: 'El usuario no existe' });
+        res.status(200).json({ user: userUpdate });
 
     } catch (error) {
         res.status(500).json({ message: `Error al realizar la petición ${error}` });
