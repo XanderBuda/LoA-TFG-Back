@@ -114,10 +114,10 @@ userController.updateElo = async (req, res) => {
 
     try {
 
-        const { name } = req.body;
+        const { usernameLOL } = req.body;
         const { riotToken } = req.params;
 
-        const url = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`;
+        const url = `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${usernameLOL}`;
 
         const data = await fetch(url, { headers: { 'X-Riot-Token': riotToken } })
         const riotRes = await data.json();
@@ -127,7 +127,7 @@ userController.updateElo = async (req, res) => {
         const url2 = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${idRiot}`;
         const data2 = await fetch(url2, { headers: { 'X-Riot-Token': riotToken } });
         const riotRes2 = await data2.json();
-
+        console.log(riotRes2);
         var eloRiot = '';
 
         if(riotRes2.length == 0){

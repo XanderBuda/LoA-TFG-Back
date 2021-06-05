@@ -88,7 +88,7 @@ const userController = require('../Controllers/user.controller');
  *           victories: 15
  *           defeats: 8
  *           rankingpoints: 260      
- *         elo: Silver 2
+ *         elo: Silver II
  *         roles:
  *           first: Toplane
  *           second: Adc
@@ -662,6 +662,90 @@ router.put('/update', validarJWT, userController.updateUser);
  *                 message: Error al realizar la petición + /custom_message/
  */
 router.delete('/delete', validarJWT, userController.deleteUser);
-// router.put('/updateElo/:riotToken?', validarJWT, userController.updateElo);
+
+/**
+ * @swagger
+ * /user/updateElo/{riotToken}:
+ *   put:
+ *     summary: Actualiza el elo del usuario a traves de su usuario en el LOL
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: riotToken
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: API KEY de Riot para poder usar su api
+ *     requestBody:
+ *       description: Nombre de usuario en LOL del usuario
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               usernameLOL:
+ *                 type: string
+ *             example:
+ *               usernameLOL: IronPepe
+ *     tags: [User] 
+ *     responses:
+ *       200:
+ *         description: Devuelve el usuario con el elo actualizado
+ *         content: 
+ *           application/json:
+ *             schema:
+ *                 $ref: '#/components/schemas/User'
+ *       400:
+ *         description: "Error: Bad Request"
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: "Error: Bad Request"
+ *               example:
+ *                 message: No existe web token
+ *       401:
+ *         description: Token no válido
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Token no válido
+ *               example:
+ *                 message: Token no válido
+ *       404:
+ *         description: El usuario no existe
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: El usuario no existe
+ *               example:
+ *                 message: El usuario no existe
+ *       500:
+ *         description: Error del servidor
+ *         content: 
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message: 
+ *                   type: string
+ *                   description: Error al realizar la petición
+ *               example:
+ *                 message: Error al realizar la petición + /custom_message/
+ */
+router.put('/updateElo/:riotToken', validarJWT, userController.updateElo);
 
 module.exports = router;
