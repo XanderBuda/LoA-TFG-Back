@@ -479,7 +479,7 @@ router.get('/:id', validarJWT, userController.getUserById);
  *                   type: string
  *                   description: "Error: Bad Request"
  *               example:
- *                 message: No existe web token
+ *                 message: Formato incorrecto
  *       409:
  *         description: No se ha podido guardar el usuario
  *         content: 
