@@ -4,32 +4,6 @@ const { validarJWT } = require('../Middlewares/jwt-validator');
 const router = Router();
 const { login, renewToken } = require('../Controllers/auth.controller');
 
-/**
- * @swagger
- * components:
- *   schemas:
- *     Error:
- *       type: object
- *       properties:
- *         error: 
- *           type: object
- *           description: Error de validación de campos
- *       example:
- *                 error: {
- *                          "username": {
- *                           "value": "",
- *                           "msg": "Username is required",
- *                           "param": "username",
- *                           "location": "body"
- *                         },
- *                        "password": {
- *                         "value": "",
- *                         "msg": "Password is required",
- *                         "param": "password",
- *                         "location": "body"
- *                         }}
- *     
- */
 
 /**
   * @swagger
@@ -80,7 +54,24 @@ const { login, renewToken } = require('../Controllers/auth.controller');
  *         content: 
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Error'
+ *               properties:
+ *                 error: 
+ *                   type: object
+ *                   description: Error de validación de campos
+ *               example:
+ *                 error: {
+ *                          "username": {
+ *                           "value": "",
+ *                           "msg": "Username is required",
+ *                           "param": "username",
+ *                           "location": "body"
+ *                         },
+ *                        "password": {
+ *                         "value": "",
+ *                         "msg": "Password is required",
+ *                         "param": "password",
+ *                         "location": "body"
+ *                         }}
  *       404:
  *         description: El usuario no existe
  *         content: 
