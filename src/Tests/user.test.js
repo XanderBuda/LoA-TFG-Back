@@ -139,11 +139,11 @@ describe('POST /user/new', () => {
 
 })
 
-describe('PUT /user/update/:id', () => {
+describe('PUT /user/update', () => {
 
     test('Actualizo un usuario existente', async () => {
 
-        await request(api).put('/user/update/' + user.id)
+        await request(api).put('/user/update')
             .set('Authorization', token)
             .send({
                 roles: {
@@ -156,7 +156,7 @@ describe('PUT /user/update/:id', () => {
     })
 
     test('No envío token', async () => {
-        await request(api).put('/user/update/' + user.id)
+        await request(api).put('/user/update')
             .send({
                 roles: {
                     first: "Toplane",
@@ -168,7 +168,7 @@ describe('PUT /user/update/:id', () => {
     })
 
     test('Token falso', async () => {
-        await request(api).put('/user/update/' + user.id)
+        await request(api).put('/user/update')
             .set('Authorization', 'Bearer asedfrgbdfsb.3456546')
             .send({
                 roles: {
@@ -182,7 +182,7 @@ describe('PUT /user/update/:id', () => {
 
     test('Actualizo un usuario no existente', async () => {
         await User.deleteMany({})
-        await request(api).put('/user/update/' + user.id)
+        await request(api).put('/user/update')
             .set('Authorization', token)
             .send({
                 roles: {
@@ -194,17 +194,7 @@ describe('PUT /user/update/:id', () => {
             .expect('Content-Type', /application\/json/)
     })
 
-    test('Actualizo con un formato id incorrecto', async () => {
-
-        await request(api).put('/user/update/' + 'eeee')
-            .set('Authorization', token)
-            .send({
-                email: "pepo@gmail.com",
-            })
-            .expect(500)
-            .expect('Content-Type', /application\/json/)
-    })
-
+    
 
 })
 
