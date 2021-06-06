@@ -13,7 +13,8 @@ var mockTeam = {
     name: "Crazy Romanians"
 }
 var mockTournament = {
-    name: "The final noobs"
+    name: "The final noobs",
+    size: 4
 }
 
 module.exports = { 

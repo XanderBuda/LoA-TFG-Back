@@ -9,6 +9,7 @@
     "test:auth": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/auth.test.js",
     "test:team": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/team.test.js",
     "test:user": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/user.test.js",
+    "test:tournament": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/tournament.test.js",
     "test:upload": "cross-env NODE_ENV=test PORT=1234 jest --verbose --forceExit Tests/upload.test.js"
   },
   "jest": {

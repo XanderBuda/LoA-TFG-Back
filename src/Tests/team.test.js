@@ -81,7 +81,7 @@ describe('GET /team/:id', () => {
             .expect('Content-Type', /application\/json/)
     })
 
-    test('No envio token', async () => {
+    test('Token falso', async () => {
 
         await request(api).get('/team/' + team.id)
             .set('Authorization', 'Bearer asedfrgbdfsb.3456546')
