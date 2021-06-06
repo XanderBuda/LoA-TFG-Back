@@ -3,21 +3,12 @@ const { api } = require('../index');
 const User = require('../Models/User');
 const Team = require('../Models/Team');
 const { generarJWT } = require('../Helpers/jwt');
+const { mockUserNotPicture, mockTeam } = require('./Mocks/mocks')
 var token, user, team;
-
-var mockUser = {
-    username: "Pepo",
-    email: "pepo@gmail.com",
-    password: "pepo"
-}
-
-var mockTeam = {
-    name: "Crazy Romanians"
-}
 
 beforeEach(async () => {
     await User.deleteMany({});
-    user = new User(mockUser);
+    user = new User(mockUserNotPicture);
     await user.save();
 
     user = await User.findOne(user);

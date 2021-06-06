@@ -2,21 +2,9 @@ const request = require('supertest');
 const { api } = require('../index');
 const { generarJWT } = require('../Helpers/jwt');
 const User = require('../Models/User');
-var token, user, userNoPic,tokenNoPic;
+const { mockUser, mockUserNotPicture } = require('./Mocks/mocks');
 
-var mockUser = {
-    username: "Pepo",
-    email: "pepo@gmail.com",
-    password: "pepo",
-    picture: "8f1308f1-849a-453a-ab12-5e4281696462.jpg"
-}
-var mockUserNotPicture = {
-    username: "Pepi",
-    email: "pepi@gmail.com",
-    password: "pepo",
-    picture: null
-
-}
+var token, user, userNoPic, tokenNoPic;
 
 
 // Antes de cada test
@@ -38,8 +26,6 @@ beforeEach(async () => {
     tokenNoPic = `Bearer ${tokenNoPic}`;
 });
 
-
-jest.setTimeout(30000);
 describe('PUT /upload/:type', () => {
 
     test('Introduzco un tipo no valido', async () => {
@@ -82,9 +68,9 @@ describe('GET /upload/:type', () => {
             .expect('Content-Type', 'image/jpeg');
 
     });
-   
+
     test('Recoge la la foto de un usuario que no tiene foto', async () => {
-        
+
         await request(api).get('/upload/User')
             .set('Authorization', tokenNoPic)
             .expect(200)
@@ -101,8 +87,6 @@ describe('GET /upload/:type', () => {
 
     });
 
-
-
     test('Introduzco mal el endpoint', async () => {
 
         await request(api).get('/uploads/User')
@@ -111,6 +95,5 @@ describe('GET /upload/:type', () => {
             .expect('Content-Type', 'text/html; charset=utf-8');
 
     });
-
 
 });

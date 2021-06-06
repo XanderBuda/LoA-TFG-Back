@@ -3,19 +3,14 @@ const { api } = require('../index');
 const User = require('../Models/User');
 const { generarJWT } = require('../Helpers/jwt');
 const bcrypt = require('bcryptjs');
+const { mockUserNotPicture } = require('./Mocks/mocks');
 var token, user;
-
-var mockUser = {
-    username: "Pepo",
-    email: "pepo@gmail.com",
-    password: "pepo"
-}
 
 beforeEach(async () => {
     await User.deleteMany({});
-    user = new User(mockUser);
+    user = new User(mockUserNotPicture);
     const salt = bcrypt.genSaltSync();
-    user.password = bcrypt.hashSync(mockUser.password, salt);
+    user.password = bcrypt.hashSync(mockUserNotPicture.password, salt);
     await user.save();
 
     user = await User.findOne(user);
@@ -29,8 +24,8 @@ describe('POST /login', () => {
 
         await request(api).post('/login')
             .send({
-                username: mockUser.username,
-                password: mockUser.password
+                username: mockUserNotPicture.username,
+                password: mockUserNotPicture.password
             })
             .expect(200)
             .expect('Content-Type', /application\/json/)
@@ -47,8 +42,8 @@ describe('POST /login', () => {
 
         await request(api).post('/login')
             .send({
-                username: "Pepo",
-                password: "pepe"
+                username: "Pepi",
+                password: "pepx"
             })
             .expect(400)
             .expect('Content-Type', /application\/json/)

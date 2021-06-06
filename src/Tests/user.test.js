@@ -2,19 +2,15 @@ const request = require('supertest');
 const { api } = require('../index');
 const User = require('../Models/User');
 const { generarJWT } = require('../Helpers/jwt');
+const { mockUserNotPicture } = require('./Mocks/mocks');
 var token, user;
 
-var mockUser = {
-    username: "Pepo",
-    email: "pepo@gmail.com",
-    password: "pepo"
-}
 
 // Antes de cada test
 beforeEach(async () => {
 
     await User.deleteMany({}) // Borro todos los usuarios
-    user = new User(mockUser); // Creo un nuevo usuario mock
+    user = new User(mockUserNotPicture); // Creo un nuevo usuario mock
     await user.save(); // Lo guardo en BD
 
     user = await User.findOne(user); // Lo recupero de la BD ya con el id
@@ -128,7 +124,7 @@ describe('POST /user/new', () => {
 
         await request(api).post('/user/new')
             .send({
-                username: "Pepo",
+                username: "Pepi",
                 email: "pepo@gmail.com",
                 password: "pepo"
             })
