@@ -1,0 +1,124 @@
+@startuml LoA
+left to right direction
+:user:
+
+usecase UC1 as "Gestionar Usuarios
+--
+Extension Points
+Crear un usuario
+Ver todos los usuarios
+Ver todas las peticiones de un usuario
+Buscar un usuario concreto
+Actualizar un usuario
+Borrar un usuario
+Actualizar ELO del usuario
+"
+usecase UC2 as "Gestionar Autorizacion
+--
+Extension Points
+Autenticarse
+Renovar acceso
+"
+usecase UC3 as "Gestionar Peticiones
+--
+Extension Points
+Solicitar entrar a un equipo
+Solicitar entrar a un torneo
+Sugerir que se una a tu equipo
+Sugerir que se una a tu torneo
+"
+usecase UC4 as "Gestionar Equipos
+--
+Extension Points
+Ver todos los equipos
+Ver el torneo donde participa un equipo
+Ver un equipo concreto
+Ver numero de integrantes
+Crear un equipo
+Actualizar un equipo
+Añadir un usuario al equipo
+Eliminar un usuario del equipo
+Eliminar un equipo
+"
+usecase UC5 as "Gestionar Torneos
+--
+Extension Points
+Ver todos los torneos
+Ver un torneo concreto
+Ver los participantes del torneo
+Crear un torneo
+Actualizar un torneo
+Eliminar un equipo del torneo
+Añadir une equipo al torneo
+Eliminar un torneo
+"
+usecase UC6 as "Gestionar subida de archivos
+--
+Extension Points
+Poner foto a un usuario
+Poner foto a un equipo
+Poner foto a un torneo
+Ver foto de un usuario
+Ver foto de un equipo
+Ver foto de un torneo
+"
+
+:user: -- UC1
+:user: - UC2
+:user: --- UC3
+:user: --- UC4
+:user: --- UC5
+:user: -- UC6
+
+
+(Crear un usuario) ..> UC1 : <<Extends>>
+(Ver todos los usuarios) ..> UC1 : <<Extends>>
+(Ver todas las peticiones de un usuario) ..> UC1  : <<Extends>>
+(Buscar un usuario concreto) ..> UC1 : <<Extends>>
+(Actualizar un usuario) ..> UC1 : <<Extends>>
+(Borrar un usuario) ..> UC1 : <<Extends>>
+(Actualizar ELO del usuario) ..> UC1 : <<Extends>>
+
+(Autenticarse) ..> UC2 :  <<Extends>>
+(Renovar acceso) ..> UC2 :<<Extends>>
+
+(Solicitar entrar a un equipo) ..> UC3 :<<Extends>>
+(Solicitar entrar a un torneo) ..> UC3 :<<Extends>>
+(Sugerir que se una a tu equipo) ..> UC3 :<<Extends>>
+(Sugerir que se una a tu torneo) ..> UC3 :<<Extends>>
+
+(Ver todos los torneos)...> UC5 :<<Extends>>
+(Ver un torneo concreto)..> UC5 :<<Extends>>
+(Ver los participantes del torneo)..> UC5 :<<Extends>>
+(Crear un torneo)...> UC5 :<<Extends>>
+(Actualizar un torneo)..> UC5 :<<Extends>>
+(Eliminar un equipo del torneo)..> UC5 :<<Extends>>
+(Añadir une equipo al torneo)..> UC5 :<<Extends>>
+(Eliminar un torneo).> UC5 :<<Extends>>
+
+(Poner foto a un usuario)..> UC6 :<<Extends>>
+(Poner foto a un equipo)..> UC6 :<<Extends>>
+(Poner foto a un torneo)..> UC6 :<<Extends>>
+(Ver foto de un usuario)..> UC6 :<<Extends>>
+(Ver foto de un equipo)..> UC6 :<<Extends>>
+(Ver foto de un torneo)..> UC6 :<<Extends>>
+
+(Ver todos los equipos) ..> UC4 :<<Extends>>
+(Ver el torneo donde participa un equipo)..> UC4 :<<Extends>>
+(Ver un equipo concreto)..> UC4 :<<Extends>>
+(Ver numero de integrantes)..> UC4 :<<Extends>>
+(Crear un equipo)..> UC4 :<<Extends>>
+(Actualizar un equipo)..> UC4 :<<Extends>>
+(Añadir un usuario al equipo)..> UC4 :<<Extends>>
+(Eliminar un usuario del equipo)..> UC4 :<<Extends>>
+(Eliminar un equipo)..> UC4 :<<Extends>>
+
+UC1 ...> (Autenticarse) : <<Include>>
+UC3 ...> (Autenticarse) : <<Include>>
+UC4 ..> (Autenticarse) : <<Include>>
+UC5 ...> (Autenticarse) : <<Include>>
+UC6 ...> (Autenticarse) : <<Include>>
+(Renovar acceso) ..> (Autenticarse) :<<Include>>
+
+
+@enduml
