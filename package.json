@@ -43,9 +43,8 @@
     "serve-index": "^1.9.1",
     "swagger-jsdoc": "6.0.0",
     "swagger-ui-express": "^4.1.6",
-    "uuid": "^8.3.2" ,
+    "uuid": "^8.3.2",
     "normalize-url": ">=4.5.1"
-}
   },
   "devDependencies": {
     "jest": "^27.0.1",
